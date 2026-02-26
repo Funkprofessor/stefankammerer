@@ -1,0 +1,84 @@
+[
+    {
+        "musicTitle": "Variationen",
+        "workMeta": "über das Jetzt",
+        "workTitle": "Eine Choreografie",
+        "workYear": "2026",
+        "description": "\"Variationen über das Jetzt\" kreist um die Frage nach dem Wesen des Augenblicks.<br><br>Was ist ein Moment – und was bleibt von ihm, sobald er vergangen ist? Das Stück untersucht, wie sich Wahrnehmung im Übergang zur Erinnerung verändert: Klänge entstehen, verdichten sich, lösen sich auf und erscheinen in neuer Gestalt. So wird das „Jetzt“ nicht als fixer Punkt verstanden, sondern als etwas Bewegliches – ein Zustand zwischen Gegenwart, Nachklang und innerer Rekonstruktion.",
+        "audioFile": "assets/variationen.mp3",
+        "bgImage": "assets/variationen.jpg"
+    },
+    {
+        "musicTitle": "1000 Jahre",
+        "workMeta": "aus \"Limpert. 20 Minuten Frühling\"",
+        "workTitle": "von Florian Bald",
+        "workYear": "2025",
+        "description": "Tausend Jahre<br>nichts gesehen, nichts gehört, lange geschwiegen – und nicht geweint.<br>Tausend Jahre.<br>Alles Gute, Schöne und Wahre.<br>Tausend Jahre<br>Vor dem dritten Hahnenschrei<br>für tausend Jahre.",
+        "audioFile": "assets/1000jahre.mp3",
+        "bgImage": "assets/1000jahre.jpg"
+    },
+    {
+        "musicTitle": "OPENING SCORE",
+        "workMeta": "aus",
+        "workTitle": "LUST AUF WANDEL (FILM)",
+        "workYear": "2025",
+        "description": "Der Film begleitet Menschen auf ihrer Reise zu einem bewussteren Leben – nicht technisch, sondern emotional.<br><br>Die Musik bereitet diese innere Bewegung, das Loslassen, die stille Sehnsucht nach Veränderung vor – und gibt den Bildern Raum, sich zu entfalten. Wandel und Stille – übersetzt in Klang.",
+        "audioFile": "assets/lustaufwandel.mp3",
+        "bgImage": "assets/wandel.jpg"
+    },
+    {
+        "musicTitle": "fɛɐ̯ˈɡɛŋlɪçkaɪ̯t",
+        "workMeta": "für",
+        "workTitle": "eine Bildinstallation",
+        "workYear": "2025",
+        "description": "Die Musik entstand als Auftragsarbeit für eine Bildinstallation, die sich mit der menschlichen Vergänglichkeit im Kontrast zur Beständigkeit der Natur auseinandersetzt. Während das menschliche Leben von Zeitlichkeit und Endlichkeit geprägt ist, erscheint die Natur als fortdauernder Kreislauf von Werden und Vergehen.<br><br>Diese Spannung zwischen Fragilität und Kontinuität spiegelt sich in der musikalischen Gestaltung wider.",
+        "audioFile": "assets/vergaenglichkeit.mp3",
+        "bgImage": "assets/vergaenglichkeit.jpg"
+    },
+    {
+        "musicTitle": "Sterben",
+        "workMeta": "aus",
+        "workTitle": "LÄUTEN",
+        "workYear": "2024",
+        "description": "In der Performance \"Läuten\" wird der Klangraum einer Kirchenglocke durch eine Audio-Installation mit dem 3D-Lautsprechersystem IKO (Higher Order Ambisonics) räumlich erfahrbar gemacht. Dabei steht nicht nur der physikalische Klang im Fokus, sondern die Frage, wie Hören kulturell und sozial geprägt ist.<br><br>\"Sterben\" thematisiert das Verklingen als Moment des Übergangs – ein akustisches Loslassen, das körperlich spürbar wird.",
+        "audioFile": "assets/sterben.mp3",
+        "bgImage": "assets/sterben.jpg",
+        "useWorkDesc": true
+    },
+    {
+        "musicTitle": "Epilog",
+        "workMeta": "aus",
+        "workTitle": "Mond.Masse.Mensch",
+        "workYear": "2024",
+        "description": "In \"Mond.Masse.Mensch\" entstand eine Musik, die das Verhältnis von Individuum und Masse zu Gehör bringt: inspiriert von den Bewegungsmustern der Jupitermonde, die in Balance zwischen Anziehung und Fliehkraft verweilen. Die Komposition webt Klangflächen, rhythmische Impulse und atmosphärische Spannungen – sie reflektiert, wie Körper in Bewegung geraten, sich aus ihrer Bahn werfen oder in der Menge aufgehen.<br>Die Musik formuliert akustisch die Frage nach Freiheit, Zugehörigkeit und Macht – und lädt dazu ein, das eigene Verhältnis zur Masse zu hinterfragen.",
+        "audioFile": "assets/epilog.mp3",
+        "bgImage": "assets/momame.jpg"
+    },
+    {
+        "musicTitle": "STERNENGUCKER",
+        "workMeta": "aus",
+        "workTitle": "VERSEHRT",
+        "workYear": "2022",
+        "description": "Über den Begriff der Versehrtheit nähert sich Spiel.Werk dem Thema Kaspar Hauser an. Das Tanzsolo \"Versehrt\" beschäftigt sich mit dieser Zurückgeworfenheit auf den eigenen Körper. Es geht um Kaspar Hausers Anstrengungen, nach Jahren des Liegens und Sitzens auf dem Kerkerboden Gehen und Sprechen zu lernen. Aber auch um den körperlichen Ausdruck seiner Fähigkeit zur kindlichen Freude und seinen unbändigen Lebenswillen.",
+        "audioFile": "assets/sternengucker.mp3",
+        "bgImage": "assets/versehrt.jpg"
+    },
+    {
+        "musicTitle": "LEERE",
+        "workMeta": "aus",
+        "workTitle": "THIS IS MY CITY",
+        "workYear": "2022",
+        "description": "Anlässlich des 800-jährigen Jubiläums der Stadt Ansbach entwickelt Spiel.Werk das Projekt \"This is my City\". In kurzen Tanztheatersequenzen werden Episoden erzählt, die etwas mit der Lebenswirklichkeit der Menschen in dieser Stadt zu tun haben.",
+        "audioFile": "assets/thisismycity01.mp3",
+        "bgImage": "assets/city01.jpg"
+    },
+    {
+        "musicTitle": "HOFNARREN BALKONSZENE",
+        "workMeta": "aus",
+        "workTitle": "HOFNARREN",
+        "workYear": "2021",
+        "description": "Für Florian Bolds Komödie Hofnarren entstand eine eigens komponierte Musik in Rokoko-Anmutung – verspielt, prunkvoll und mit feinem Gespür für Zwischentöne. Ihre Uraufführung erlebte sie im Rahmen der Ansbacher Rokoko-Festspiele.",
+        "audioFile": "assets/hofnarren-balkonszene.mp3",
+        "bgImage": "assets/hofnarren.jpg"
+    }
+]

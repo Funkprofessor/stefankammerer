@@ -1,0 +1,48 @@
+================================================================================
+ANLEITUNG: TONBEISPIEL-DATEN PFLEGEN
+================================================================================
+
+Die Tonbeispiele werden aus der Datei "audio-examples.json" geladen.
+Änderungen in dieser Datei werden automatisch auf der Website angezeigt.
+
+SO FÜGEN SIE EIN NEUES TONBEISPIEL HINZU:
+--------------------------------------------------------------------------------
+
+Öffnen Sie die Datei "audio-examples.json" und fügen Sie ein neues Objekt hinzu:
+
+{
+    "musicTitle": "TITEL DES MUSIKSTÜCKS",
+    "workMeta": "aus",
+    "workTitle": "PROJEKT TITEL",
+    "workYear": "2024",
+    "description": "Beschreibungstext hier...",
+    "audioFile": "assets/ihre-audiodatei.mp3",
+    "bgClass": "city-bg"
+}
+
+OPTIONALE FELDER:
+--------------------------------------------------------------------------------
+- "bgClass": Hintergrundklasse (z.B. "city-bg", "sterben-bg", "wandel-bg", 
+  "versehrt-bg", "hofnarren-bg"). Weglassen, wenn kein Hintergrundbild.
+- "useWorkDesc": true/false - wenn true, wird <div class="work-desc"> 
+  statt <p class="work-description"> verwendet
+
+WICHTIG:
+--------------------------------------------------------------------------------
+- Vergessen Sie nicht das Komma nach jedem Eintrag (außer dem letzten)
+- HTML-Tags wie <br> funktionieren im "description"-Feld
+- Die "audioFile" muss auf eine vorhandene MP3-Datei im assets-Ordner zeigen
+- Nach dem Speichern einfach die Website im Browser aktualisieren
+
+BEISPIEL:
+--------------------------------------------------------------------------------
+{
+    "musicTitle": "MEIN NEUES STÜCK",
+    "workMeta": "aus",
+    "workTitle": "MEIN PROJEKT",
+    "workYear": "2025",
+    "description": "Dies ist die Beschreibung meines neuen Musikstücks.<br>Zweite Zeile mit <br> Zeilenumbruch.",
+    "audioFile": "assets/mein-neues-stueck.mp3"
+}
+
+================================================================================

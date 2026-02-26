@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEFAN KAMMERER - KOMPONIST</title>
+    <meta name="description" content="Stefan Kammerer – Komponist, Sound Designer und Digital Artist. Biografie, Werke, Kontakt und mehr.">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--void-black) 100%);
+            color: var(--electric-lime);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 80%, var(--neon-pink) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, var(--cyber-blue) 1px, transparent 1px),
+                radial-gradient(circle at 40% 40%, var(--nuclear-green) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px, 75px 75px;
+            pointer-events: none;
+            animation: staticNoise 20s infinite linear;
+            z-index: -1;
+        }
+        @keyframes staticNoise {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-10px); }
+            50% { transform: translateX(5px) translateY(5px); }
+            75% { transform: translateX(-10px) translateY(10px); }
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--neon-pink) 49%, var(--neon-pink) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--cyber-blue) 49%, var(--cyber-blue) 51%, transparent 52%);
+            background-size: 200px 200px, 250px 250px;
+            background-position: 0 0, 100px 100px;
+            animation: bgShift 15s infinite ease-in-out;
+            padding-left: 6vw;
+            padding-right: 6vw;
+        }
+        @keyframes bgShift {
+            0%, 100% { background-position: 0 0, 100px 100px; }
+            50% { background-position: 50px 50px, 150px 150px; }
+        }
+        h1 {
+            font-size: clamp(4rem, 15vw, 20rem);
+            font-weight: 900;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            text-align: center;
+            margin-bottom: 2rem;
+            transform: perspective(1000px) rotateX(15deg);
+            text-shadow: 
+                0 0 20px var(--electric-lime),
+                0 0 40px var(--electric-lime),
+                0 0 80px var(--electric-lime);
+        }
+        .subtitle {
+            font-size: clamp(1.5rem, 4vw, 4rem);
+            font-weight: 300;
+            color: var(--acid-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-family: 'Space Grotesk', sans-serif;
+            animation: pulse 3s infinite ease-in-out;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        section {
+            padding: 10vh 8vw;
+            position: relative;
+            border-top: 3px solid var(--electric-lime);
+            background: linear-gradient(90deg, var(--void-black) 0%, var(--deep-purple) 50%, var(--void-black) 100%);
+        }
+        .section-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            color: var(--neon-pink);
+            margin-bottom: 2.2rem;
+            position: relative;
+            display: block;
+            text-align: center;
+            transform: skew(-5deg);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) skew(5deg);
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--nuclear-green), var(--cyber-blue), var(--blood-orange));
+        }
+        .bio-text {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            line-height: 1.4;
+            color: var(--electric-lime);
+            font-weight: 400;
+            max-width: 80ch;
+            margin-bottom: 3rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .bio-text::first-letter {
+            font-size: 8rem;
+            float: left;
+            line-height: 6rem;
+            margin: 0 1rem 0 0;
+            color: var(--acid-yellow);
+            font-weight: 900;
+            text-shadow: 2px 2px 0 var(--neon-pink);
+        }
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+            align-items: stretch;
+            grid-auto-rows: 1fr;
+        }
+        .work-item {
+            background: linear-gradient(135deg, var(--deep-purple), var(--void-black));
+            border: 2px solid var(--cyber-blue);
+            padding: 1.5rem 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
+            height: 100%;
+        }
+        .work-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--neon-pink), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rotate 4s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .work-item:hover::before {
+            opacity: 0.1;
+        }
+        .work-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--nuclear-green);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+        .work-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--acid-yellow);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+        .work-year {
+            font-size: 1.2rem;
+            color: var(--cyber-blue);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .work-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--electric-lime);
+            position: relative;
+            z-index: 2;
+        }
+        .contact-section {
+            background: linear-gradient(45deg, var(--void-black), var(--deep-purple), var(--void-black));
+            text-align: center;
+            padding: 15vh 5vw;
+        }
+        .contact-info {
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            color: var(--electric-lime);
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .contact-info:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+            animation: glitchFlash 0.3s ease;
+        }
+        @keyframes glitchFlash {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        .footer-text {
+            font-size: 1rem;
+            color: var(--cyber-blue);
+            margin-top: 5rem;
+            opacity: 0.7;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .content-head {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--nuclear-green);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        section p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--electric-lime);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            max-width: 70ch;
+        }
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .work-item {
+                padding: 2rem;
+            }
+            section {
+                padding: 5vh 5vw;
+            }
+            header {
+                padding-left: 2vw;
+                padding-right: 2vw;
+            }
+        }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--void-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-pink), var(--cyber-blue));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--nuclear-green), var(--acid-yellow));
+        }
+        .work-description, .work-title, .content-head {
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            word-break: break-word;
+        }
+    </style>
+    <style>
+        .audio-visual-section {
+            margin: 8vh 0 8vh 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .audio-visual-canvas {
+            background: rgba(0,0,0,0.2);
+            border: 2px solid var(--cyber-blue);
+            border-radius: 18px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            width: 90vw;
+            max-width: 700px;
+            height: 220px;
+            display: block;
+        }
+        .audio-visual-controls {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .audio-visual-btn {
+            background: var(--deep-purple);
+            color: var(--acid-yellow);
+            border: 2px solid var(--cyber-blue);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .audio-visual-btn.active, .audio-visual-btn:hover {
+            background: var(--cyber-blue);
+            color: var(--deep-purple);
+            border-color: var(--nuclear-green);
+        }
+        .audio-visual-player {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+    <style>
+    .audio-play-btn {
+        margin-top: 1.2rem;
+        background: var(--neon-pink);
+        color: var(--void-black);
+        border: none;
+        border-radius: 1.2rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 0 12px 0 var(--neon-pink), 0 0 4px 1px var(--acid-yellow);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+        outline: none;
+        position: relative;
+        z-index: 2;
+        white-space: nowrap;
+    }
+    .audio-play-btn.active, .audio-play-btn:hover {
+        background: var(--acid-yellow);
+        color: var(--deep-purple);
+        box-shadow: 0 0 18px 0 var(--acid-yellow), 0 0 6px 2px var(--neon-pink);
+        transform: scale(1.04) rotate(-1deg);
+    }
+    </style>
+    <style>
+    .work-theater {
+        font-size: 1.05rem;
+        color: var(--electric-lime);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        margin-bottom: 0.1rem;
+    }
+    .theater-title {
+        font-size: 2.7rem;
+        font-weight: 900;
+        color: var(--acid-yellow);
+        font-family: 'JetBrains Mono', monospace;
+        display: block;
+        line-height: 1.05;
+        margin-bottom: 0.7rem;
+        margin-top: 0.1rem;
+        letter-spacing: -0.01em;
+    }
+    .music-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--neon-pink);
+        font-family: 'JetBrains Mono', monospace;
+        display: block;
+        margin-bottom: 0.7rem;
+        margin-top: 0.2rem;
+        letter-spacing: 0.01em;
+    }
+    .work-year {
+        font-size: 1.25rem;
+        color: var(--cyber-blue);
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        margin-bottom: 1.1rem;
+        margin-top: 0.2rem;
+        display: block;
+    }
+    .work-description {
+        font-size: 1.1rem;
+        color: var(--electric-lime);
+        font-family: 'Space Grotesk', sans-serif;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+        max-width: 70ch;
+    }
+  </style>
+    <script>
+        // 6 kontrastreiche Farbpaletten
+        const colorPalettes = [
+          {
+            // Original
+            "--electric-lime": "#CCFF00",
+            "--neon-pink": "#FF0080",
+            "--deep-purple": "#1A0033",
+            "--acid-yellow": "#FFFF00",
+            "--cyber-blue": "#00FFFF",
+            "--blood-orange": "#FF4500",
+            "--void-black": "#000000",
+            "--nuclear-green": "#39FF14"
+          },
+          {
+            // Türkis/Orange/Anthrazit
+            "--electric-lime": "#00FFD0",
+            "--neon-pink": "#FF6F00",
+            "--deep-purple": "#232946",
+            "--acid-yellow": "#FFE347",
+            "--cyber-blue": "#00BFFF",
+            "--blood-orange": "#FF3C38",
+            "--void-black": "#121629",
+            "--nuclear-green": "#00FF87"
+          },
+          {
+            // Grün/Magenta/Dunkelblau
+            "--electric-lime": "#A8FF60",
+            "--neon-pink": "#FF2D95",
+            "--deep-purple": "#0A2342",
+            "--acid-yellow": "#F9FF21",
+            "--cyber-blue": "#00CFFF",
+            "--blood-orange": "#FF5E13",
+            "--void-black": "#0B132B",
+            "--nuclear-green": "#39FF14"
+          },
+          {
+            // Gelb/Blau/Schwarz
+            "--electric-lime": "#FFF700",
+            "--neon-pink": "#00B2FF",
+            "--deep-purple": "#1A1A1A",
+            "--acid-yellow": "#FFFACD",
+            "--cyber-blue": "#00E0FF",
+            "--blood-orange": "#FF6B00",
+            "--void-black": "#000000",
+            "--nuclear-green": "#B6FF00"
+          },
+          {
+            // Lila/Grün/Schwarz
+            "--electric-lime": "#B6FF00",
+            "--neon-pink": "#B967FF",
+            "--deep-purple": "#2D0036",
+            "--acid-yellow": "#F3FF00",
+            "--cyber-blue": "#00FFD0",
+            "--blood-orange": "#FF5E13",
+            "--void-black": "#0D0D0D",
+            "--nuclear-green": "#39FF14"
+          },
+          {
+            // Rot/Türkis/Dunkelgrau
+            "--electric-lime": "#00FFB3",
+            "--neon-pink": "#FF0054",
+            "--deep-purple": "#23272A",
+            "--acid-yellow": "#FFF700",
+            "--cyber-blue": "#00CFFF",
+            "--blood-orange": "#FF3C38",
+            "--void-black": "#181A1B",
+            "--nuclear-green": "#00FF87"
+          },
+          {
+            // Schwarz/Weiß/Grau (farblos)
+            "--electric-lime": "#FFFFFF",
+            "--neon-pink": "#CCCCCC",
+            "--deep-purple": "#222222",
+            "--acid-yellow": "#F5F5F5",
+            "--cyber-blue": "#888888",
+            "--blood-orange": "#444444",
+            "--void-black": "#000000",
+            "--nuclear-green": "#E0E0E0"
+          }
+        ];
+        // Zufällig eine Palette wählen
+        const palette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+        // CSS-Variablen setzen
+        window.addEventListener('DOMContentLoaded', () => {
+          const root = document.documentElement;
+          Object.entries(palette).forEach(([key, value]) => {
+            root.style.setProperty(key, value);
+          });
+        });
+    </script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <header style="position:relative;overflow:hidden;">
+        <h1 id="vibe-title" style="position:relative;z-index:1;color:var(--electric-lime);font-size:clamp(4rem,15vw,20rem);font-weight:900;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:-0.05em;line-height:0.8;text-align:center;margin-bottom:2rem;">
+            STEFAN<br>KAMMERER
+        </h1>
+        <div class="subtitle" style="position:relative;z-index:1;">KOMPONIST • SOUND DESIGNER • DIGITAL ARTIST</div>
+    </header>
+    <style>
+header {
+  padding-top: 8rem !important;
+  padding-bottom: 8rem !important;
+}
+h1#vibe-title {
+  text-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+@media (max-width: 700px) {
+  header {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 8rem 2vw 8rem 2vw !important;
+  }
+  h1#vibe-title {
+    font-size: clamp(3.2rem, 16vw, 7.5rem) !important;
+    margin-bottom: 1.2rem;
+  }
+  .subtitle {
+    font-size: clamp(1.1rem, 4vw, 2.2rem) !important;
+    margin-top: 1.2rem;
+    padding: 0 1.5rem !important;
+  }
+}
+</style>
+    <main>
+        <section>
+            <h2 class="section-title">Über mich</h2>
+            <div class="work-grid">
+                <div class="work-item">
+                    <h3 class="content-head">Klanggestalter zwischen Epochen</h3>
+                    <p>Ich baue Klangwelten für Körper, die ohne Worte erzählen. Als Komponist für Bühnenmusik entwickle ich Soundräume, die von barocken Formen bis zu elektronischen Experimenten reichen.</p>
+                </div>
+                <div class="work-item">
+                    <h3 class="content-head">Bewegung hört mit</h3>
+                    <p>Im Bewegungstheater wird Klang zum Spielpartner. Mal atmende Drones, die den Raum durchziehen, mal treibende Rhythmen, die Bewegungen initiieren – jede Produktion verlangt ihre eigene musikalische Handschrift. Ich komponiere für Körper, die in den Klang hineintauchen.</p>
+                </div>
+                <div class="work-item">
+                    <h3 class="content-head">Stilübergreifende Neugier</h3>
+                    <p>Barocke Rekonstruktionen faszinieren mich ebenso wie Industrial-Soundscapes. Ich lasse Cembalo auf Synthesizer treffen, schreibe algorithmisch generierte Stücke genauso wie intime Kammermusik. Texte vertone ich für Chor oder Solostimme. In der zeitgenössischen Kunstmusik fließen diese Welten oft zusammen.</p>
+                </div>
+                <div class="work-item">
+                    <h3 class="content-head">Zwischen Komposition und Technologie</h3>
+                    <p>Mich reizt das Neue – inhaltlich, klanglich, technisch. Für das IKO-System etwa komponiere ich ambisonische Musik, die sich im Raum bewegt. Der Ikosaeder-Lautsprecher wird dabei zum Instrument, das Musik räumlich erfahrbar macht. Solche Projekte öffnen Türen zwischen Hören, Raum und Bewegung.</p>
+                </div>
+                <div class="work-item">
+                    <h3 class="content-head">Flexibles Arbeiten</h3>
+                    <p>Wie Musik entsteht, hängt vom Projekt ab: Mal beginne ich mit Skizzen, mal mit Gesprächen über Raum und Bewegung. Manchmal entwickelt sich der Klang parallel zu den ersten Proben. Ich arbeite prozessoffen und passe mich den Menschen und Ideen an, die ein Stück prägen.</p>
+                </div>
+                <div class="work-item">
+                    <h3 class="content-head">Klangsuche</h3>
+                    <p>Ich suche nach dem einen Ton, der passt – zu Szene, Bewegung, Atmosphäre. Manchmal genügt ein einzelner Sinuston, um einen Raum zu öffnen. Manchmal entsteht ein dichtes Geflecht aus hundert Layern. Immer geht es um das richtige Hören im richtigen Moment.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="section-title">BEISPIELE</h2>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">This is my City</div>
+                    <div class="music-title">Leere</div>
+                    <div class="work-year">2022</div>
+                    <div class="work-description">
+                        Anlässlich des 800-jährigen Jubiläums der Stadt Ansbach entwickelt Spiel.Werk das Projekt „This is my City“. In kurzen Tanztheatersequenzen werden Episoden erzählt, die etwas mit der Lebenswirklichkeit der Menschen in dieser Stadt zu tun haben.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/thisismycity01.mp3">Audio abspielen</button>
+                    <audio src="assets/thisismycity01.mp3" style="display:none"></audio>
+                </div>
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">Neon Cathedral</div>
+                    <div class="music-title">Neon Cathedral</div>
+                    <div class="work-year">2023</div>
+                    <div class="work-description">
+                        Eine immersive Klanginstallation für 32 Lautsprecher und visuelle Projektionen. Vier Stunden Dauerschleife schaffen eine meditative Erfahrung zwischen Sakralität und Cyberpunk.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/neoncathedral.mp3">Audio abspielen</button>
+                    <audio src="assets/neoncathedral.mp3" style="display:none"></audio>
+                </div>
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">Machine Dreams</div>
+                    <div class="music-title">Machine Dreams</div>
+                    <div class="work-year">2023</div>
+                    <div class="work-description">
+                        Kammermusikzyklus für präpariertes Klavier, Synthesizer und Feldaufnahmen. Eine poetische Reflexion über künstliche Intelligenz und menschliche Kreativität.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/machinedreams.mp3">Audio abspielen</button>
+                    <audio src="assets/machinedreams.mp3" style="display:none"></audio>
+                </div>
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">Urban Decay Symphony</div>
+                    <div class="music-title">Urban Decay Symphony</div>
+                    <div class="work-year">2022</div>
+                    <div class="work-description">
+                        Sinfonisches Werk in vier Sätzen, das den Verfall und die Regeneration urbaner Räume musikalisch nachzeichnet. Uraufführung mit dem London Symphony Orchestra.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/urbandecay.mp3">Audio abspielen</button>
+                    <audio src="assets/urbandecay.mp3" style="display:none"></audio>
+                </div>
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">Quantum Entanglement</div>
+                    <div class="music-title">Quantum Entanglement</div>
+                    <div class="work-year">2022</div>
+                    <div class="work-description">
+                        Interaktive Performance für zwei Pianisten und Echtzeit-Klangverarbeitung. Die Musiker beeinflussen durch ihre Bewegungen die elektronische Komponente des Stücks.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/quantumentanglement.mp3">Audio abspielen</button>
+                    <audio src="assets/quantumentanglement.mp3" style="display:none"></audio>
+                </div>
+                <div class="work-item">
+                    <div class="work-theater">aus</div>
+                    <div class="theater-title">Echo Chambers</div>
+                    <div class="music-title">Echo Chambers</div>
+                    <div class="work-year">2021</div>
+                    <div class="work-description">
+                        Multimedia-Oper über Isolation und Kommunikation im digitalen Zeitalter. Kombiniert traditionelle Gesangstechniken mit experimenteller Vokaltechnik und Live-Electronics.
+                    </div>
+                    <button class="audio-play-btn" data-audio="assets/echochambers.mp3">Audio abspielen</button>
+                    <audio src="assets/echochambers.mp3" style="display:none"></audio>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section">
+            <h2 class="section-title">KONTAKT</h2>
+            <div class="contact-info">
+                <a href="mailto:kammererstefan@gmail.com" style="color:inherit;text-decoration:none;">kammererstefan@gmail.com</a>
+            </div>
+            <div class="contact-info">
+                <a href="tel:+4915115677364" style="color:inherit;text-decoration:none;">+49 151 15677364</a>
+            </div>
+            <div class="contact-info">ANSBACH • DEUTSCHLAND</div>
+        </section>
+        <footer>
+            <div class="footer-text">
+                © 2024 STEFAN KAMMERER • ALL RIGHTS RESERVED<br>
+                DIGITAL COMPOSITION • SOUND DESIGN • LIVE PERFORMANCE
+            </div>
+        </footer>
+    </main>
+    <script>
+// Play/Stop-Button-Logik und Farbpuls-Animation für alle Werke-Kästchen
+const allWorkItems = document.querySelectorAll('.work-item');
+let globalAudioCtxs = [];
+let globalAnimIds = [];
+let lastPlayingAudio = null;
+allWorkItems.forEach((item, idx) => {
+    const btn = item.querySelector('.audio-play-btn');
+    const audio = item.querySelector('audio');
+    const title = item.querySelector('.work-title');
+    if (!btn || !audio) return;
+    let audioCtx, analyser, source, dataArray, animId, setupDone = false;
+    let colorPulseVars = [
+        { var: '--neon-pink', base: [320, 100, 50] },
+        { var: '--cyber-blue', base: [190, 100, 50] },
+        { var: '--acid-yellow', base: [65, 100, 50] }
+    ];
+    let origTitleColor = title ? getComputedStyle(title).color : null;
+    function initColorPulse() {
+        if (!setupDone) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            source = audioCtx.createMediaElementSource(audio);
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 64;
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            setupDone = true;
+            globalAudioCtxs[idx] = audioCtx;
+        }
+    }
+    function stopAllOthers() {
+        allWorkItems.forEach((otherItem, otherIdx) => {
+            if (otherItem === item) return;
+            const otherAudio = otherItem.querySelector('audio');
+            const otherBtn = otherItem.querySelector('.audio-play-btn');
+            if (otherAudio && !otherAudio.paused) {
+                otherAudio.pause();
+                otherAudio.currentTime = 0;
+                if (otherBtn) {
+                    otherBtn.classList.remove('active');
+                    otherBtn.textContent = 'Audio abspielen';
+                }
+            }
+            // Stoppe ggf. Animation
+            if (globalAnimIds[otherIdx]) cancelAnimationFrame(globalAnimIds[otherIdx]);
+            // Setze Titel-Farbe zurück
+            const otherTitle = otherItem.querySelector('.work-title');
+            if (otherTitle && origTitleColor) otherTitle.style.color = origTitleColor;
+        });
+    }
+    function stopColorPulse() {
+        if (animId) cancelAnimationFrame(animId);
+        if (title && origTitleColor) title.style.color = origTitleColor;
+    }
+    function pulseColors() {
+        animId = requestAnimationFrame(pulseColors);
+        globalAnimIds[idx] = animId;
+        analyser.getByteFrequencyData(dataArray);
+        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+        const pulse = 0.3 + (avg / 255) * 1.5;
+        const now = Date.now();
+        colorPulseVars.forEach(({var: v, base}, i) => {
+            const h = (base[0] + (Math.sin(now/180 + i) * 60) + (avg/255)*80) % 360;
+            const s = Math.max(40, Math.min(100, base[1] * pulse));
+            const l = Math.max(25, Math.min(90, base[2] * pulse + 30));
+            document.documentElement.style.setProperty(v, `hsl(${h}, ${s}%, ${l}%)`);
+        });
+        // Headline-Farbe dynamisch anpassen
+        if (title) {
+            if (avg > 180) {
+                title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--neon-pink');
+                title.style.transition = 'color 0.1s';
+            } else {
+                title.style.color = origTitleColor;
+                title.style.transition = 'color 0.5s';
+            }
+        }
+    }
+    btn.addEventListener('click', () => {
+        if (audio.paused) {
+            stopAllOthers();
+            initColorPulse();
+            audio.play();
+            btn.classList.add('active');
+            btn.textContent = 'Audio stoppen';
+            pulseColors();
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            btn.classList.remove('active');
+            btn.textContent = 'Audio abspielen';
+            stopColorPulse();
+        }
+    });
+    audio.addEventListener('ended', () => {
+        btn.classList.remove('active');
+        btn.textContent = 'Audio abspielen';
+        stopColorPulse();
+    });
+    audio.addEventListener('pause', () => {
+        btn.classList.remove('active');
+        btn.textContent = 'Audio abspielen';
+        stopColorPulse();
+    });
+});
+</script>
+</body>
+</html>

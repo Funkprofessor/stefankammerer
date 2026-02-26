@@ -1,0 +1,117 @@
+# PROJEKTE-ÜBERSICHT
+# Strukturierte Liste aller Projekte mit Audio-Links für einfache Wartung
+
+## PROJEKT 1: LEERE
+- Musik-Titel: LEERE
+- Aus: THIS IS MY CITY
+- Jahr: 2022
+- CSS-Klasse: city-bg
+- Hintergrundbild: assets/city01.jpg
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Anlässlich des 800-jährigen Jubiläums der Stadt Ansbach entwickelt Spiel.Werk das Projekt „This is my City". In kurzen Tanztheatersequenzen werden Episoden erzählt, die etwas mit der Lebenswirklichkeit der Menschen in dieser Stadt zu tun haben.
+
+## PROJEKT 2: STERBEN
+- Musik-Titel: Sterben
+- Aus: LÄUTEN
+- Jahr: 2024
+- CSS-Klasse: sterben-bg
+- Hintergrundbild: assets/sterben.jpg
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: In der Performance „Läuten" wird der Klangraum einer Kirchenglocke durch eine Audio-Installation mit dem 3D-Lautsprechersystem IKO (Higher Order Ambisonics) räumlich erfahrbar gemacht. Dabei steht nicht nur der physikalische Klang im Fokus, sondern die Frage, wie Hören kulturell und sozial geprägt ist.
+„Sterben" thematisiert das Verklingen als Moment des Übergangs – ein akustisches Loslassen, das körperlich spürbar wird.
+
+## PROJEKT 3: OPENING SCORE
+- Musik-Titel: OPENING SCORE
+- Aus: LUST AUF WANDEL (FILM)
+- Jahr: 2025
+- CSS-Klasse: wandel-bg
+- Hintergrundbild: assets/wandel.jpg
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Der Film begleitet Menschen auf ihrer Reise zu einem bewussteren Leben – nicht technisch, sondern emotional.
+Die Musik bereitet diese innere Bewegung, das Loslassen, die stille Sehnsucht nach Veränderung vor – und gibt den Bildern Raum, sich zu entfalten. Wandel und Stille – übersetzt in Klang.
+
+## PROJEKT 4: STERNENGUCKER
+- Musik-Titel: STERNENGUCKER
+- Aus: VERSEHRT
+- Jahr: 2022
+- CSS-Klasse: versehrt-bg
+- Hintergrundbild: assets/versehrt.jpg
+- Audio-Datei: assets/sternengucker.mp3
+- Beschreibung: Über den Begriff der Versehrtheit nähert sich Spiel.Werk dem Thema Kaspar Hauser an. Das Tanzsolo „Versehrt" beschäftigt sich mit dieser Zurückgeworfenheit auf den eigenen Körper. Es geht um Kaspar Hausers Anstrengungen, nach Jahren des Liegens und Sitzens auf dem Kerkerboden Gehen und Sprechen zu lernen. Aber auch um den körperlichen Ausdruck seiner Fähigkeit zur kindlichen Freude und seinen unbändigen Lebenswillen.
+
+## PROJEKT 5: HOFNARREN BALKONSZENE
+- Musik-Titel: HOFNARREN BALKONSZENE
+- Aus: HOFNARREN
+- Jahr: 2021
+- CSS-Klasse: hofnarren-bg
+- Hintergrundbild: assets/hofnarren.jpg
+- Audio-Datei: assets/hofnarren-balkonszene.mp3
+- Beschreibung: Für Florian Bolds Komödie Hofnarren entstand eine eigens komponierte Musik in Rokoko-Anmutung – verspielt, prunkvoll und mit feinem Gespür für Zwischentöne. Ihre Uraufführung erlebte sie im Rahmen der Ansbacher Rokoko-Festspiele.
+
+## PROJEKT 6: Mond.Masse.Mensche
+- Musik-Titel: Epilog
+- Aus: URBAN DECAY SYMPHONY
+- Jahr: 2024
+- CSS-Klasse: (keine Hintergrundbild-Klasse)
+- Audio-Datei: assets/epilog.mp3
+- Beschreibung: In „Mond.Masse.Mensch“ entstand eine Musik, die das Verhältnis von Individuum und Masse zu Gehör bringt: inspiriert von den Bewegungsmustern der Jupitermonde, die in Balance zwischen Anziehung und Fliehkraft verweilen. Die Komposition webt Klangflächen, rhythmische Impulse und atmosphärische Spannungen – sie reflektiert, wie Körper in Bewegung geraten, sich aus ihrer Bahn werfen oder in der Menge aufgehen.<br>Die Musik unterstützt das Tanz-Theaterstück, inszeniert von Daniela Aue, formuliert akustisch die Frage nach Freiheit, Zugehörigkeit und Macht – und lädt dazu ein, das eigene Verhältnis zur Masse zu hinterfragen.
+
+## PROJEKT 7: QUANTUM ENTANGLEMENT
+- Musik-Titel: QUANTUM ENTANGLEMENT
+- Aus: QUANTUM ENTANGLEMENT
+- Jahr: 2022
+- CSS-Klasse: (keine Hintergrundbild-Klasse)
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Interaktive Performance für zwei Pianisten und Echtzeit-Klangverarbeitung. Die Musiker beeinflussen durch ihre Bewegungen die elektronische Komponente des Stücks.
+
+## PROJEKT 8: NEON NOCTURNE
+- Musik-Titel: NEON NOCTURNE
+- Aus: NEON NOCTURNE
+- Jahr: 2023
+- CSS-Klasse: (keine Hintergrundbild-Klasse)
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Elektronisches Ambient-Stück, das die Atmosphäre einer nächtlichen Stadtlandschaft einfängt. Komponiert für das Festival für Neue Musik in München.
+
+## PROJEKT 9: RESONANCE CHAMBER
+- Musik-Titel: RESONANCE CHAMBER
+- Aus: RESONANCE CHAMBER
+- Jahr: 2023
+- CSS-Klasse: (keine Hintergrundbild-Klasse)
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Raumklang-Installation für 16 Lautsprecher, die die akustischen Eigenschaften verschiedener architektonischer Räume erkundet.
+
+## PROJEKT 10: DIGITAL FOLKLORE
+- Musik-Titel: DIGITAL FOLKLORE
+- Aus: DIGITAL FOLKLORE
+- Jahr: 2024
+- CSS-Klasse: (keine Hintergrundbild-Klasse)
+- Audio-Datei: assets/thisismycity01.mp3
+- Beschreibung: Hybridwerk, das traditionelle Volksmusik mit digitaler Klangverarbeitung verbindet. Eine zeitgenössische Interpretation regionaler Musiktraditionen.
+
+---
+
+## ANLEITUNG ZUR WARTUNG:
+
+### Neues Projekt hinzufügen:
+1. Neue Sektion mit fortlaufender Nummer erstellen
+2. Alle Felder ausfüllen (Musik-Titel, Aus, Jahr, etc.)
+3. Bei Hintergrundbild: CSS-Klasse nach Schema "projektname-bg" erstellen
+4. Audio-Datei in assets/ Ordner ablegen
+5. Hintergrundbild in assets/ Ordner ablegen
+
+### Projekt bearbeiten:
+1. Gewünschte Sektion finden
+2. Felder entsprechend anpassen
+3. Dateien in assets/ Ordner aktualisieren
+
+### CSS-Klassen für Hintergrundbilder:
+- city-bg (für city01.jpg)
+- sterben-bg (für sterben.jpg)
+- wandel-bg (für wandel.jpg)
+- versehrt-bg (für versehrt.jpg)
+- hofnarren-bg (für hofnarren.jpg)
+- [neue-klasse]-bg (für neue Hintergrundbilder)
+
+### JavaScript-Array aktualisieren:
+Bei neuen Hintergrundbild-Klassen das Array in der HTML-Datei erweitern:
+['city-bg', 'sterben-bg', 'wandel-bg', 'versehrt-bg', 'hofnarren-bg', 'neue-klasse-bg']
