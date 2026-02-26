@@ -16,8 +16,21 @@
     <meta name="twitter:description" content="Stefan Kammerer – Komponist, Sound Designer und Audiotekt. Musik für Ihr Theater, Tanz und Installation. Werke, Kontakt und mehr.">
     <meta name="twitter:image" content="https://www.stefankammerer.de/assets/stefankammerer_opengraph.jpg">
     <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Noto Serif';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('assets/fonts/noto-serif-400.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Noto Serif';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('assets/fonts/noto-serif-700.ttf') format('truetype');
+        }
         * {
             margin: 0;
             padding: 0;
@@ -206,19 +219,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: var(--pastel-yellow);
-        }
-        .content-block:nth-child(3n+2) {
-            background: var(--pastel-green);
-        }
-        .content-block:nth-child(3n) {
-            background: var(--pastel-purple);
-        }
-        
-        .content-block:hover {
-            background: var(--pastel-purple);
-            color: var(--black);
-            transition: all 0.1s ease;
         }
         
         .block-title {
@@ -253,33 +253,14 @@
         /* Checkerboard-Muster für .work-item mit vier Farben */
         .work-item {
             /* border entfernt */
-            padding: 4rem 3rem 4rem 3rem;
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
             position: relative;
-            min-height: 400px;
+            min-height: 520px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            height: 100%;
             color: var(--black);
-            background: var(--pastel-yellow);
-        }
-        .work-item:nth-child(2) {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-        .work-item:nth-child(3) {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        .work-item:nth-child(n+4) {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        
-        .work-item:nth-child(3n+2) {
-            background: var(--pastel-green);
-        }
-        .work-item:nth-child(3n) {
-            background: var(--pastel-purple);
         }
         
         .work-item:nth-child(even) .audio-btn {
@@ -349,16 +330,17 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: visible;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             cursor: pointer;
             transition: background 0.15s, color 0.15s, box-shadow 0.18s, transform 0.18s;
             margin-top: auto;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0;
             padding: 0;
             margin-left: auto;
             margin-right: auto;
+            align-self: center;
         }
-        .audio-btn .audio-emoji,
         .audio-btn .audio-ohr {
             font-size: 4.4rem;
             width: 4.4rem;
@@ -371,13 +353,9 @@
             background: #222 !important;
             color: #fff !important;
         }
-        .audio-btn:hover .audio-emoji,
-        .audio-btn.active .audio-emoji {
-            filter: invert(1) grayscale(1) brightness(2);
-        }
         .audio-btn .audio-ohr {
-            width: 2.2rem;
-            height: 2.2rem;
+            width: 5rem;
+            height: 5rem;
             display: block;
             object-fit: contain;
             transition: filter 0.15s;
@@ -546,8 +524,8 @@
     </style>
     <style>
         .music-title {
-            font-size: 2.5rem !important;
-            font-weight: 900 !important;
+            font-size: 2.5rem;
+            font-weight: 900;
             margin-bottom: 0.7rem;
             text-transform: uppercase;
             letter-spacing: -0.01em;
@@ -556,42 +534,10 @@
             -ms-hyphens: auto;
         }
 .music-title, .work-meta, .work-title, .work-year, .work-description, .work-desc {
-    line-height: 1.35 !important;
-}
-.work-item {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: stretch !important;
-    height: 100% !important;
+    line-height: 1.35;
 }
 .work-item > *:not(.audio-btn):not(audio) {
-    align-self: unset !important;
-}
-.audio-btn {
-    width: 8rem !important;
-    height: 8rem !important;
-    font-size: 5rem !important;
-    align-self: flex-end !important;
-    margin-top: auto !important;
-    margin-bottom: 0.2rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-.audio-hint {
-    align-self: center !important;
-}
-.audio-btn .audio-ohr {
-    width: 5rem !important;
-    height: 5rem !important;
-}
-.work-item {
-    padding-top: 2.5rem !important;
-}
-.audio-btn {
-    position: relative !important;
-    overflow: visible !important;
+    align-self: unset;
 }
 .audio-btn.active::before, .audio-btn.active::after {
     content: '';
@@ -649,25 +595,6 @@
 .work-item.active-bg .work-desc {
     opacity: 0 !important;
     transition: opacity 0.3s ease !important;
-}
-.work-item.sterben-bg.active-bg { --bg-image: url('assets/sterben.jpg'); }
-.work-item.city-bg.active-bg { --bg-image: url('assets/city01.jpg'); }
-.work-item.wandel-bg.active-bg { --bg-image: url('assets/wandel.jpg'); }
-.work-item.versehrt-bg.active-bg { --bg-image: url('assets/versehrt.jpg'); }
-.work-item.hofnarren-bg.active-bg { --bg-image: url('assets/hofnarren.jpg'); }
-</style>
-<style>
-.work-item {
-    padding: 3rem 2.5rem 2.5rem 2.5rem !important;
-    min-height: 520px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-}
-.audio-btn {
-    margin-top: auto !important;
-    margin-bottom: 0 !important;
-    align-self: center !important;
 }
 </style>
 <style>
@@ -845,7 +772,7 @@
                     <div class="work-year">${item.workYear}</div>
                     <${descTag} class="${descClass}">${item.description}</${descTag}>
                     <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
-                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" style="width:2.2rem;height:2.2rem;display:block;object-fit:contain;" />
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
                     </button>
                     <audio src="${item.audioFile}" preload="auto"></audio>
                 </div>
@@ -922,28 +849,6 @@
     </div>
     
     <script>
-        // Simple audio button functionality (mock)
-        document.querySelectorAll('.audio-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Reset all other buttons
-                document.querySelectorAll('.audio-btn').forEach(otherBtn => {
-                    if (otherBtn !== this) {
-                        otherBtn.classList.remove('active');
-                        // otherBtn.textContent = 'AUDIO ABSPIELEN'; // Removed text button
-                    }
-                });
-                
-                // Toggle this button
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                    // this.textContent = 'AUDIO STOPPEN'; // Removed text button
-                } else {
-                    this.classList.add('active');
-                    // this.textContent = 'AUDIO STOPPEN'; // Removed text button
-                }
-            });
-        });
-        
         // Add some geometric shapes dynamically
         function addGeometricShapes() {
             const sections = document.querySelectorAll('.content-section');
