@@ -5,766 +5,1238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEFAN KAMMERER - KOMPONIST</title>
     <meta name="description" content="Stefan Kammerer – Komponist, Sound Designer und Digital Artist. Biografie, Werke, Kontakt und mehr.">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
+        :root {
+            --black: #222;
+            --white: #fff;
+            --gray-light: #f3f3f3;
+            --gray-medium: #e0e0e0;
+            --gray-dark: #5a5a5f;
+            --gray1: #f8f8f8;
+            --gray2: #ededed;
+            --gray3: #e0e0e0;
+            --gray4: #d3d3d3;
+            --gray5: #c6c6c6;
+            --accent: #222;
+            --pastel-blue: #fff;
+            --pastel-green: #f3f3f3;
+            --pastel-yellow: #e0e0e0;
+            --pastel-purple: #f3f3f3;
+            --pastel-orange: #e0e0e0;
+            --pastel-mint: #fff;
+        }
+        
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--void-black) 100%);
-            color: var(--electric-lime);
+            font-family: 'Noto Serif', Georgia, serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1;
             overflow-x: hidden;
-            cursor: crosshair;
         }
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            opacity: 0.03;
-            background: 
-                radial-gradient(circle at 20% 80%, var(--neon-pink) 2px, transparent 2px),
-                radial-gradient(circle at 80% 20%, var(--cyber-blue) 1px, transparent 1px),
-                radial-gradient(circle at 40% 40%, var(--nuclear-green) 1px, transparent 1px);
-            background-size: 100px 100px, 150px 150px, 75px 75px;
-            pointer-events: none;
-            animation: staticNoise 20s infinite linear;
-            z-index: -1;
+        main {
+            display: contents;
         }
-        @keyframes staticNoise {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-5px) translateY(-10px); }
-            50% { transform: translateX(5px) translateY(5px); }
-            75% { transform: translateX(-10px) translateY(10px); }
+        
+        .skip-link {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.6rem 1rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            z-index: 1000;
+            transform: translateY(-200%);
+            transition: transform 0.2s ease;
         }
-        header {
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--black);
+            outline-offset: 4px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .audio-btn.active::before,
+            .audio-btn.active::after {
+                animation: none !important;
+            }
+        }
+        
+        /* Grid System */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            background: var(--pastel-blue);
+            color: var(--black);
+            padding: 0;
+            position: relative;
+            min-height: 100vh !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            position: relative;
-            background: 
-                linear-gradient(45deg, transparent 48%, var(--neon-pink) 49%, var(--neon-pink) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, var(--cyber-blue) 49%, var(--cyber-blue) 51%, transparent 52%);
-            background-size: 200px 200px, 250px 250px;
-            background-position: 0 0, 100px 100px;
-            animation: bgShift 15s infinite ease-in-out;
-            padding-left: 6vw;
-            padding-right: 6vw;
         }
-        @keyframes bgShift {
-            0%, 100% { background-position: 0 0, 100px 100px; }
-            50% { background-position: 50px 50px, 150px 150px; }
+        
+        .header-content {
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
         }
-        h1 {
-            font-size: clamp(4rem, 15vw, 20rem);
-            font-weight: 900;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
+        
+        .main-title {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 800;
+            font-size: clamp(4rem, 12vw, 18rem);
             letter-spacing: -0.05em;
             line-height: 0.8;
-            text-align: center;
-            margin-bottom: 2rem;
-            transform: perspective(1000px) rotateX(15deg);
-            text-shadow: 
-                0 0 20px var(--electric-lime),
-                0 0 40px var(--electric-lime),
-                0 0 80px var(--electric-lime);
-        }
-        .subtitle {
-            font-size: clamp(1.5rem, 4vw, 4rem);
-            font-weight: 300;
-            color: var(--acid-yellow);
             text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-family: 'Space Grotesk', sans-serif;
-            animation: pulse 3s infinite ease-in-out;
-            text-align: center;
-            margin-top: 2rem;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        section {
-            padding: 10vh 8vw;
-            position: relative;
-            border-top: 3px solid var(--electric-lime);
-            background: linear-gradient(90deg, var(--void-black) 0%, var(--deep-purple) 50%, var(--void-black) 100%);
-        }
-        .section-title {
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            color: var(--neon-pink);
-            margin-bottom: 2.2rem;
-            position: relative;
-            display: block;
-            text-align: center;
-            transform: skew(-5deg);
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%) skew(5deg);
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--nuclear-green), var(--cyber-blue), var(--blood-orange));
-        }
-        .bio-text {
-            font-size: clamp(1.2rem, 2.5vw, 2rem);
-            line-height: 1.4;
-            color: var(--electric-lime);
-            font-weight: 400;
-            max-width: 80ch;
-            margin-bottom: 3rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .bio-text::first-letter {
-            font-size: 8rem;
-            float: left;
-            line-height: 6rem;
-            margin: 0 1rem 0 0;
-            color: var(--acid-yellow);
-            font-weight: 900;
-            text-shadow: 2px 2px 0 var(--neon-pink);
-        }
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-top: 5rem;
-            align-items: stretch;
-            grid-auto-rows: 1fr;
-        }
-        .work-item {
-            background: linear-gradient(135deg, var(--deep-purple), var(--void-black));
-            border: 2px solid var(--cyber-blue);
-            padding: 1.5rem 1.5rem;
-            position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100%;
-            height: 100%;
-        }
-        .work-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, var(--neon-pink), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            animation: rotate 4s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .work-item:hover::before {
-            opacity: 0.1;
-        }
-        .work-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--nuclear-green);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
-        }
-        .work-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--acid-yellow);
-            margin-bottom: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-        }
-        .work-year {
-            font-size: 1.2rem;
-            color: var(--cyber-blue);
-            font-weight: 300;
             margin-bottom: 2rem;
             position: relative;
-            z-index: 2;
-        }
-        .work-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--electric-lime);
-            position: relative;
-            z-index: 2;
-        }
-        .contact-section {
-            background: linear-gradient(45deg, var(--void-black), var(--deep-purple), var(--void-black));
-            text-align: center;
-            padding: 15vh 5vw;
-        }
-        .contact-info {
-            font-size: clamp(1.5rem, 3vw, 3rem);
-            color: var(--electric-lime);
-            margin: 2rem 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .contact-info:hover {
-            color: var(--neon-pink);
-            text-shadow: 0 0 20px var(--neon-pink);
-            animation: glitchFlash 0.3s ease;
-        }
-        @keyframes glitchFlash {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            75% { transform: translateX(2px); }
-        }
-        .footer-text {
-            font-size: 1rem;
-            color: var(--cyber-blue);
-            margin-top: 5rem;
-            opacity: 0.7;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .content-head {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            color: var(--nuclear-green);
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-        section p {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            color: var(--electric-lime);
-            font-family: 'Space Grotesk', sans-serif;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-            max-width: 70ch;
-        }
-        @media (max-width: 768px) {
-            .work-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .work-item {
-                padding: 2rem;
-            }
-            section {
-                padding: 5vh 5vw;
-            }
-            header {
-                padding-left: 2vw;
-                padding-right: 2vw;
-            }
-        }
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--void-black);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--neon-pink), var(--cyber-blue));
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(var(--nuclear-green), var(--acid-yellow));
-        }
-        .work-description, .work-title, .content-head {
             hyphens: auto;
             -webkit-hyphens: auto;
             -ms-hyphens: auto;
-            word-break: break-word;
         }
-    </style>
-    <style>
-        .audio-visual-section {
-            margin: 8vh 0 8vh 0;
+        
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 8px;
+            background: var(--pastel-purple);
+        }
+        
+        .subtitle {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 2.5vw, 2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 3rem;
+            opacity: 0.8;
+        }
+        
+        .staff-lines {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 8px,
+                var(--black) 8px,
+                var(--black) 10px
+            );
+            opacity: 0.3;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            grid-column: 1 / -1;
+            background: var(--pastel-mint);
+            padding: 0;
+        }
+        
+        .section-title {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 400 !important;
+            font-size: clamp(3rem, 8vw, 8rem);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            padding: 2rem;
+            margin: 0;
+            text-align: center;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            grid-column: 1 / -1;
+            padding: 0;
+            background: var(--white);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 0;
+        }
+        
+        /* Checkerboard-Muster für .content-block und .work-item */
+        .content-block {
+            /* border entfernt */
+            padding: 3rem;
+            position: relative;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: space-between;
+            background: var(--pastel-yellow);
         }
-        .audio-visual-canvas {
-            background: rgba(0,0,0,0.2);
-            border: 2px solid var(--cyber-blue);
-            border-radius: 18px;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            width: 90vw;
-            max-width: 700px;
-            height: 220px;
-            display: block;
+        .content-block:nth-child(3n+2) {
+            background: var(--pastel-green);
         }
-        .audio-visual-controls {
+        .content-block:nth-child(3n) {
+            background: var(--pastel-purple);
+        }
+        
+        .content-block:hover {
+            background: var(--pastel-purple);
+            color: var(--black);
+            transition: all 0.1s ease;
+        }
+        
+        .block-title {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+        
+        .block-text {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 1rem;
+            line-height: 1.4;
+            font-weight: 400;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+        
+        /* Work Examples */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 0;
+        }
+        
+        /* Checkerboard-Muster für .work-item mit vier Farben */
+        .work-item {
+            /* border entfernt */
+            padding: 4rem 3rem 4rem 3rem;
+            position: relative;
+            min-height: 400px;
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+            color: var(--black);
+            background: var(--pastel-yellow);
         }
-        .audio-visual-btn {
-            background: var(--deep-purple);
-            color: var(--acid-yellow);
-            border: 2px solid var(--cyber-blue);
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
+        .work-item:nth-child(2) {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .work-item:nth-child(3) {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .work-item:nth-child(n+4) {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        .work-item:nth-child(3n+2) {
+            background: var(--pastel-green);
+        }
+        .work-item:nth-child(3n) {
+            background: var(--pastel-purple);
+        }
+        
+        .work-item:nth-child(even) .audio-btn {
+            background: #fff;
+            color: #222;
+        }
+        
+        .work-item:nth-child(even) .audio-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        
+        .work-meta {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem !important;
+            opacity: 0.7;
+        }
+        
+        .work-title {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .work-subtitle {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .work-year {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 700;
             font-size: 1.1rem;
-            padding: 0.5rem 1.5rem;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, border 0.2s;
-        }
-        .audio-visual-btn.active, .audio-visual-btn:hover {
-            background: var(--cyber-blue);
-            color: var(--deep-purple);
-            border-color: var(--nuclear-green);
-        }
-        .audio-visual-player {
-            width: 100%;
-            max-width: 700px;
             margin-bottom: 1.5rem;
+            opacity: 0.6;
         }
+        
+        .work-description {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+        
+        /* Entferne alle alten Text-Button-Regeln und sorge für einheitliches Button-Design */
+        .audio-btn {
+            width: 8rem;
+            height: 8rem;
+            font-size: 4.4rem;
+            background: #fff !important;
+            color: #222 !important;
+            border: none !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, box-shadow 0.18s, transform 0.18s;
+            margin-top: auto;
+            margin-bottom: 0.2rem;
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .audio-btn .audio-emoji,
+        .audio-btn .audio-ohr {
+            font-size: 4.4rem;
+            width: 4.4rem;
+            height: 4.4rem;
+            line-height: 1;
+            display: block;
+            transition: filter 0.15s;
+        }
+        .audio-btn:hover, .audio-btn.active {
+            background: #222 !important;
+            color: #fff !important;
+        }
+        .audio-btn:hover .audio-emoji,
+        .audio-btn.active .audio-emoji {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+        .audio-btn .audio-ohr {
+            width: 2.2rem;
+            height: 2.2rem;
+            display: block;
+            object-fit: contain;
+            transition: filter 0.15s;
+            position: relative;
+            z-index: 2;
+        }
+        .audio-btn:hover .audio-ohr,
+        .audio-btn.active .audio-ohr {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            grid-column: 1 / -1;
+            background: var(--pastel-purple);
+            color: var(--black);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-weight: 400 !important;
+            font-size: clamp(3rem, 8vw, 8rem);
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+        
+        .contact-info {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            font-weight: 700;
+            margin: 2rem 0;
+            text-transform: uppercase;
+        }
+        
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .contact-info:hover {
+            color: var(--accent);
+            transition: color 0.1s ease;
+        }
+        
+        .footer {
+            grid-column: 1 / -1;
+            background: var(--pastel-yellow);
+            padding: 2rem;
+            text-align: center;
+            border-top: 4px solid var(--black);
+        }
+        
+        .footer-text {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        .footer-links {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+        .footer-links a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid,
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-block,
+            .work-item {
+                padding: 2rem;
+                min-height: auto;
+            }
+            
+            .header-content {
+                padding: 1rem;
+            }
+        }
+        
+        /* Geometric Elements */
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+        
+        .geo-shape {
+            position: absolute;
+            background: var(--accent);
+        }
+        
+        .geo-1 {
+            top: 10%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            transform: rotate(45deg);
+            background: var(--pastel-orange);
+        }
+        
+        .geo-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 60px solid var(--pastel-green);
+            background: transparent;
+        }
+        
+        .geo-3 {
+            top: 30%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--pastel-mint);
+        }
+
+        /* Entferne alle background-Regeln direkt an .content-block, .work-item und deren :nth-child-Varianten */
+        .content-block, .work-item {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .content-grid, .work-grid {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        /* Farblogik nur über .color-a, .color-b, .color-c */
+        .color-a { background: var(--gray1) !important; }
+        .color-b { background: var(--gray2) !important; }
+        .color-c { background: var(--gray3) !important; }
+        .color-d { background: var(--gray4) !important; }
+        .color-e { background: var(--gray5) !important; }
     </style>
     <style>
-    .audio-play-btn {
-        margin-top: 1.2rem;
-        background: var(--neon-pink);
-        color: var(--void-black);
-        border: none;
-        border-radius: 1.2rem;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.1rem;
-        font-weight: 700;
-        padding: 0.5rem 1.5rem;
-        cursor: pointer;
-        box-shadow: 0 0 12px 0 var(--neon-pink), 0 0 4px 1px var(--acid-yellow);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
-        outline: none;
-        position: relative;
-        z-index: 2;
-        white-space: nowrap;
-    }
-    .audio-play-btn.active, .audio-play-btn:hover {
-        background: var(--acid-yellow);
-        color: var(--deep-purple);
-        box-shadow: 0 0 18px 0 var(--acid-yellow), 0 0 6px 2px var(--neon-pink);
-        transform: scale(1.04) rotate(-1deg);
-    }
-    </style>
-    <style>
-    .work-theater {
-        font-size: 1.05rem;
-        color: var(--electric-lime);
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.01em;
-        margin-bottom: 0.1rem;
-    }
-    .theater-title {
-        font-size: 2.7rem;
-        font-weight: 900;
-        color: var(--acid-yellow);
-        font-family: 'JetBrains Mono', monospace;
-        display: block;
-        line-height: 1.05;
-        margin-bottom: 0.7rem;
-        margin-top: 0.1rem;
-        letter-spacing: -0.01em;
-    }
-    .music-title {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--neon-pink);
-        font-family: 'JetBrains Mono', monospace;
-        display: block;
-        margin-bottom: 0.7rem;
-        margin-top: 0.2rem;
-        letter-spacing: 0.01em;
-    }
-    .work-year {
-        font-size: 1.25rem;
-        color: var(--cyber-blue);
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 600;
-        margin-bottom: 1.1rem;
-        margin-top: 0.2rem;
-        display: block;
-    }
-    .work-description {
-        font-size: 1.1rem;
-        color: var(--electric-lime);
-        font-family: 'Space Grotesk', sans-serif;
-        margin-bottom: 1.2rem;
-        line-height: 1.5;
-        max-width: 70ch;
-    }
-  </style>
-    <script>
-        // 6 kontrastreiche Farbpaletten
-        const colorPalettes = [
-          {
-            // Original
-            "--electric-lime": "#CCFF00",
-            "--neon-pink": "#FF0080",
-            "--deep-purple": "#1A0033",
-            "--acid-yellow": "#FFFF00",
-            "--cyber-blue": "#00FFFF",
-            "--blood-orange": "#FF4500",
-            "--void-black": "#000000",
-            "--nuclear-green": "#39FF14"
-          },
-          {
-            // Türkis/Orange/Anthrazit
-            "--electric-lime": "#00FFD0",
-            "--neon-pink": "#FF6F00",
-            "--deep-purple": "#232946",
-            "--acid-yellow": "#FFE347",
-            "--cyber-blue": "#00BFFF",
-            "--blood-orange": "#FF3C38",
-            "--void-black": "#121629",
-            "--nuclear-green": "#00FF87"
-          },
-          {
-            // Grün/Magenta/Dunkelblau
-            "--electric-lime": "#A8FF60",
-            "--neon-pink": "#FF2D95",
-            "--deep-purple": "#0A2342",
-            "--acid-yellow": "#F9FF21",
-            "--cyber-blue": "#00CFFF",
-            "--blood-orange": "#FF5E13",
-            "--void-black": "#0B132B",
-            "--nuclear-green": "#39FF14"
-          },
-          {
-            // Gelb/Blau/Schwarz
-            "--electric-lime": "#FFF700",
-            "--neon-pink": "#00B2FF",
-            "--deep-purple": "#1A1A1A",
-            "--acid-yellow": "#FFFACD",
-            "--cyber-blue": "#00E0FF",
-            "--blood-orange": "#FF6B00",
-            "--void-black": "#000000",
-            "--nuclear-green": "#B6FF00"
-          },
-          {
-            // Lila/Grün/Schwarz
-            "--electric-lime": "#B6FF00",
-            "--neon-pink": "#B967FF",
-            "--deep-purple": "#2D0036",
-            "--acid-yellow": "#F3FF00",
-            "--cyber-blue": "#00FFD0",
-            "--blood-orange": "#FF5E13",
-            "--void-black": "#0D0D0D",
-            "--nuclear-green": "#39FF14"
-          },
-          {
-            // Rot/Türkis/Dunkelgrau
-            "--electric-lime": "#00FFB3",
-            "--neon-pink": "#FF0054",
-            "--deep-purple": "#23272A",
-            "--acid-yellow": "#FFF700",
-            "--cyber-blue": "#00CFFF",
-            "--blood-orange": "#FF3C38",
-            "--void-black": "#181A1B",
-            "--nuclear-green": "#00FF87"
-          },
-          {
-            // Schwarz/Weiß/Grau (farblos)
-            "--electric-lime": "#FFFFFF",
-            "--neon-pink": "#CCCCCC",
-            "--deep-purple": "#222222",
-            "--acid-yellow": "#F5F5F5",
-            "--cyber-blue": "#888888",
-            "--blood-orange": "#444444",
-            "--void-black": "#000000",
-            "--nuclear-green": "#E0E0E0"
-          }
-        ];
-        // Zufällig eine Palette wählen
-        const palette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-        // CSS-Variablen setzen
-        window.addEventListener('DOMContentLoaded', () => {
-          const root = document.documentElement;
-          Object.entries(palette).forEach(([key, value]) => {
-            root.style.setProperty(key, value);
-          });
-        });
-    </script>
-</head>
-<body>
-    <div class="noise-overlay"></div>
-    
-    <header style="position:relative;overflow:hidden;">
-        <h1 id="vibe-title" style="position:relative;z-index:1;color:var(--electric-lime);font-size:clamp(4rem,15vw,20rem);font-weight:900;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:-0.05em;line-height:0.8;text-align:center;margin-bottom:2rem;">
-            STEFAN<br>KAMMERER
-        </h1>
-        <div class="subtitle" style="position:relative;z-index:1;">KOMPONIST • SOUND DESIGNER • DIGITAL ARTIST</div>
-    </header>
-    <style>
-header {
-  padding-top: 8rem !important;
-  padding-bottom: 8rem !important;
+        .music-title {
+            font-size: 2.5rem !important;
+            font-weight: 900 !important;
+            margin-bottom: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+.music-title, .work-meta, .work-title, .work-year, .work-description, .work-desc {
+    line-height: 1.35 !important;
 }
-h1#vibe-title {
-  text-shadow: none !important;
-  filter: none !important;
-  transform: none !important;
+.work-item {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    height: 100% !important;
 }
-@media (max-width: 700px) {
-  header {
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 8rem 2vw 8rem 2vw !important;
-  }
-  h1#vibe-title {
-    font-size: clamp(3.2rem, 16vw, 7.5rem) !important;
-    margin-bottom: 1.2rem;
-  }
-  .subtitle {
-    font-size: clamp(1.1rem, 4vw, 2.2rem) !important;
-    margin-top: 1.2rem;
-    padding: 0 1.5rem !important;
-  }
+.work-item > *:not(.audio-btn):not(audio) {
+    align-self: unset !important;
+}
+.audio-btn {
+    width: 8rem !important;
+    height: 8rem !important;
+    font-size: 5rem !important;
+    align-self: flex-end !important;
+    margin-top: auto !important;
+    margin-bottom: 0.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.audio-hint {
+    align-self: center !important;
+}
+.audio-btn .audio-ohr {
+    width: 5rem !important;
+    height: 5rem !important;
+}
+.work-item {
+    padding-top: 2.5rem !important;
+}
+.audio-btn {
+    position: relative !important;
+    overflow: visible !important;
+}
+.audio-btn.active::before, .audio-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+    z-index: 1;
+    animation: radiate 1.2s linear infinite;
+}
+.audio-btn.active::before {
+    width: 14rem;
+    height: 14rem;
+    border: 2px solid #fff;
+    opacity: 0.18;
+    animation-delay: 0s;
+}
+.audio-btn.active::after {
+    width: 17rem;
+    height: 17rem;
+    border: 2px solid #fff;
+    opacity: 0.10;
+    animation-delay: 0.6s;
+}
+@keyframes radiate {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.3;
+    }
+    70% {
+        opacity: 0.18;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
 }
 </style>
-    <main>
-        <section>
-            <h2 class="section-title">Über mich</h2>
-            <div class="work-grid">
-                <div class="work-item">
-                    <h3 class="content-head">Klanggestalter zwischen Epochen</h3>
-                    <p>Ich baue Klangwelten für Körper, die ohne Worte erzählen. Als Komponist für Bühnenmusik entwickle ich Soundräume, die von barocken Formen bis zu elektronischen Experimenten reichen.</p>
+<style>
+.work-item.active-bg {
+    background-image: var(--bg-image) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    filter: grayscale(1);
+}
+.work-item.active-bg .music-title,
+.work-item.active-bg .work-meta,
+.work-item.active-bg .work-title,
+.work-item.active-bg .work-year,
+.work-item.active-bg .work-description,
+.work-item.active-bg .work-desc {
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+.work-item.sterben-bg.active-bg { --bg-image: url('assets/sterben.jpg'); }
+.work-item.city-bg.active-bg { --bg-image: url('assets/city01.jpg'); }
+.work-item.wandel-bg.active-bg { --bg-image: url('assets/wandel.jpg'); }
+.work-item.versehrt-bg.active-bg { --bg-image: url('assets/versehrt.jpg'); }
+.work-item.hofnarren-bg.active-bg { --bg-image: url('assets/hofnarren.jpg'); }
+</style>
+<style>
+.work-item {
+    padding: 3rem 2.5rem 2.5rem 2.5rem !important;
+    min-height: 520px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+.audio-btn {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    align-self: center !important;
+}
+</style>
+<style>
+.block-text a {
+    color: #222 !important;
+    text-decoration: underline !important;
+}
+</style>
+<style>
+.header .geo-shape-random {
+    position: absolute;
+    background: #fff;
+    opacity: 0.32;
+    width: 80px;
+    height: 80px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+}
+</style>
+<style>
+.contact-social {
+  margin: 2rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.contact-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.contact-social a:hover {
+  background: #222;
+  border-color: #222;
+}
+.contact-social a svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  stroke: #222;
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.15s;
+}
+.contact-social a:hover svg {
+  stroke: #fff;
+}
+</style>
+<style>
+.contact-social a img {
+  width: 4.5rem !important;
+  height: 4.5rem !important;
+  display: block;
+}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <div class="grid">
+                <!-- Header -->
+        <header class="header">
+            <div class="geometric-bg">
+                <div class="geo-shape geo-3"></div>
+            </div>
+            <div class="header-content">
+                <h1 class="main-title">STEFAN<br>KAMMERER</h1>
+                <div class="subtitle">KOMPONIST • SOUND DESIGNER • AUDIOTEKT</div>
+            </div>
+            <div class="staff-lines"></div>
+    </header>
+    <main id="main-content">
+        
+                <!-- About Section Header -->
+        <div class="section-header">
+            <h2 class="section-title">EXPOSITION</h2>
                 </div>
-                <div class="work-item">
-                    <h3 class="content-head">Bewegung hört mit</h3>
-                    <p>Im Bewegungstheater wird Klang zum Spielpartner. Mal atmende Drones, die den Raum durchziehen, mal treibende Rhythmen, die Bewegungen initiieren – jede Produktion verlangt ihre eigene musikalische Handschrift. Ich komponiere für Körper, die in den Klang hineintauchen.</p>
+        
+        <!-- About Content -->
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="content-block">
+                    <h3 class="block-title">KLANGGESTALTER ZWISCHEN EPOCHEN</h3>
+                    <p class="block-text">Ich baue Klangwelten für Körper, die ohne Worte erzählen. Als Komponist für Bühnenmusik entwickle ich Soundräume, die von barocken Formen bis zu elektronischen Experimenten reichen.</p>
                 </div>
-                <div class="work-item">
-                    <h3 class="content-head">Stilübergreifende Neugier</h3>
-                    <p>Barocke Rekonstruktionen faszinieren mich ebenso wie Industrial-Soundscapes. Ich lasse Cembalo auf Synthesizer treffen, schreibe algorithmisch generierte Stücke genauso wie intime Kammermusik. Texte vertone ich für Chor oder Solostimme. In der zeitgenössischen Kunstmusik fließen diese Welten oft zusammen.</p>
+                <div class="content-block">
+                    <h3 class="block-title">BEWEGUNG HÖRT MIT</h3>
+                    <p class="block-text">Im Bewegungstheater wird Klang zum Spielpartner. Mal flächig, mal fragmentarisch, bestimmt er Timing, Intensität und Richtung. Geräusch, Ton und Rhythmus setzen Impulse, strukturieren den Raum – jede Produktion verlangt eine eigene musikalische Sprache.</p>
                 </div>
-                <div class="work-item">
-                    <h3 class="content-head">Zwischen Komposition und Technologie</h3>
-                    <p>Mich reizt das Neue – inhaltlich, klanglich, technisch. Für das IKO-System etwa komponiere ich ambisonische Musik, die sich im Raum bewegt. Der Ikosaeder-Lautsprecher wird dabei zum Instrument, das Musik räumlich erfahrbar macht. Solche Projekte öffnen Türen zwischen Hören, Raum und Bewegung.</p>
+                <div class="content-block">
+                    <h3 class="block-title">STILÜBERGREIFENDE NEUGIER</h3>
+                    <p class="block-text">Barocke Rekonstruktionen faszinieren mich ebenso wie Industrial-Soundscapes. Mich interessiert das Spannungsfeld zwischen Vergangenheit und Gegenwart, zwischen akustischem Handwerk und digitaler Struktur. Ich schreibe algorithmisch generierte Stücke ebenso wie intime Kammermusik.</p>
                 </div>
-                <div class="work-item">
-                    <h3 class="content-head">Flexibles Arbeiten</h3>
-                    <p>Wie Musik entsteht, hängt vom Projekt ab: Mal beginne ich mit Skizzen, mal mit Gesprächen über Raum und Bewegung. Manchmal entwickelt sich der Klang parallel zu den ersten Proben. Ich arbeite prozessoffen und passe mich den Menschen und Ideen an, die ein Stück prägen.</p>
+                <div class="content-block">
+                    <h3 class="block-title">ZWISCHEN KOMPOSITION UND TECHNOLOGIE</h3>
+                    <p class="block-text">Mich reizt das Neue – inhaltlich, klanglich, technisch. Für den <a href="https://iko.sonible.com/" target="_blank" rel="noopener">IKO</a> etwa komponiere ich ambisonische Musik, die sich im Raum bewegt. Der Ikosaeder-Lautsprecher wird dabei zum Instrument.</p>
                 </div>
-                <div class="work-item">
-                    <h3 class="content-head">Klangsuche</h3>
-                    <p>Ich suche nach dem einen Ton, der passt – zu Szene, Bewegung, Atmosphäre. Manchmal genügt ein einzelner Sinuston, um einen Raum zu öffnen. Manchmal entsteht ein dichtes Geflecht aus hundert Layern. Immer geht es um das richtige Hören im richtigen Moment.</p>
+                <div class="content-block">
+                    <h3 class="block-title">FLEXIBLES ARBEITEN</h3>
+                    <p class="block-text">Wie Musik entsteht, hängt vom Projekt ab: Mal beginne ich mit Skizzen, mal mit Gesprächen über Raum und Bewegung. Manchmal entwickelt sich der Klang parallel zu den ersten Proben.</p>
+                </div>
+                <div class="content-block">
+                    <h3 class="block-title">KLANGSUCHE</h3>
+                    <p class="block-text">Ich suche nach dem einen Ton, der passt – zu Szene, Bewegung, Atmosphäre.<br>Manchmal ist es das Ungehörte, das den Raum zum Klingen bringt.</p>
+                </div>
+                <div class="content-block">
+                    <h3 class="block-title">NEULAND</h3>
+                    <p class="block-text">Ich arbeite gern an Projekten, in denen ich Neuland betrete – klanglich, stilistisch oder technisch. Ungewohnte Kontexte, neue Werkzeuge oder fremde Ausdrucksformen reizen mich. Sie bringen Bewegung in meine Praxis und eröffnen mir Räume, in denen ich anders hören, denken und gestalten kann.</p>
                 </div>
             </div>
         </section>
-        <section>
-            <h2 class="section-title">BEISPIELE</h2>
-            <div class="work-grid">
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">This is my City</div>
-                    <div class="music-title">Leere</div>
-                    <div class="work-year">2022</div>
-                    <div class="work-description">
-                        Anlässlich des 800-jährigen Jubiläums der Stadt Ansbach entwickelt Spiel.Werk das Projekt „This is my City“. In kurzen Tanztheatersequenzen werden Episoden erzählt, die etwas mit der Lebenswirklichkeit der Menschen in dieser Stadt zu tun haben.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/thisismycity01.mp3">Audio abspielen</button>
-                    <audio src="assets/thisismycity01.mp3" style="display:none"></audio>
-                </div>
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">Neon Cathedral</div>
-                    <div class="music-title">Neon Cathedral</div>
-                    <div class="work-year">2023</div>
-                    <div class="work-description">
-                        Eine immersive Klanginstallation für 32 Lautsprecher und visuelle Projektionen. Vier Stunden Dauerschleife schaffen eine meditative Erfahrung zwischen Sakralität und Cyberpunk.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/neoncathedral.mp3">Audio abspielen</button>
-                    <audio src="assets/neoncathedral.mp3" style="display:none"></audio>
-                </div>
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">Machine Dreams</div>
-                    <div class="music-title">Machine Dreams</div>
-                    <div class="work-year">2023</div>
-                    <div class="work-description">
-                        Kammermusikzyklus für präpariertes Klavier, Synthesizer und Feldaufnahmen. Eine poetische Reflexion über künstliche Intelligenz und menschliche Kreativität.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/machinedreams.mp3">Audio abspielen</button>
-                    <audio src="assets/machinedreams.mp3" style="display:none"></audio>
-                </div>
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">Urban Decay Symphony</div>
-                    <div class="music-title">Urban Decay Symphony</div>
-                    <div class="work-year">2022</div>
-                    <div class="work-description">
-                        Sinfonisches Werk in vier Sätzen, das den Verfall und die Regeneration urbaner Räume musikalisch nachzeichnet. Uraufführung mit dem London Symphony Orchestra.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/urbandecay.mp3">Audio abspielen</button>
-                    <audio src="assets/urbandecay.mp3" style="display:none"></audio>
-                </div>
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">Quantum Entanglement</div>
-                    <div class="music-title">Quantum Entanglement</div>
-                    <div class="work-year">2022</div>
-                    <div class="work-description">
-                        Interaktive Performance für zwei Pianisten und Echtzeit-Klangverarbeitung. Die Musiker beeinflussen durch ihre Bewegungen die elektronische Komponente des Stücks.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/quantumentanglement.mp3">Audio abspielen</button>
-                    <audio src="assets/quantumentanglement.mp3" style="display:none"></audio>
-                </div>
-                <div class="work-item">
-                    <div class="work-theater">aus</div>
-                    <div class="theater-title">Echo Chambers</div>
-                    <div class="music-title">Echo Chambers</div>
-                    <div class="work-year">2021</div>
-                    <div class="work-description">
-                        Multimedia-Oper über Isolation und Kommunikation im digitalen Zeitalter. Kombiniert traditionelle Gesangstechniken mit experimenteller Vokaltechnik und Live-Electronics.
-                    </div>
-                    <button class="audio-play-btn" data-audio="assets/echochambers.mp3">Audio abspielen</button>
-                    <audio src="assets/echochambers.mp3" style="display:none"></audio>
-                </div>
+        
+        <!-- Examples Section Header -->
+        <div class="section-header">
+            <h2 class="section-title">TONSPUR</h2>
+        </div>
+        
+        <!-- Examples Content -->
+        <section class="content-section">
+            <div class="work-grid" id="work-grid">
+                <!-- Work items werden hier automatisch generiert -->
             </div>
         </section>
+        
+        <!-- Script zur Generierung der Work Items aus externer JSON-Datei -->
+        <script>
+        // Funktion zum Laden der Tonbeispiel-Daten aus der JSON-Datei
+        async function loadAudioExamples() {
+            try {
+                const response = await fetch('audio-examples.json');
+                if (!response.ok) {
+                    throw new Error('Konnte audio-examples.json nicht laden');
+                }
+                const audioExamples = await response.json();
+                return audioExamples;
+            } catch (error) {
+                console.error('Fehler beim Laden der Audio-Daten:', error);
+                return [];
+            }
+        }
+        
+        // Funktion zur Generierung der Work Items
+        function generateWorkItems(audioExamples) {
+            const grid = document.getElementById('work-grid');
+            if (!grid) return;
+            
+            // Setze Flags zurück, damit Event-Listener neu initialisiert werden können
+            if (typeof window !== 'undefined') {
+                window.audioPlayersInitialized = false;
+                window.backgroundImagesInitialized = false;
+            }
+            
+            grid.innerHTML = audioExamples.map(item => {
+                const bgClass = item.bgClass ? ` ${item.bgClass}` : '';
+                const hasBg = item.bgClass || item.bgImage;
+                const bgStyle = item.bgImage ? ` style="--bg-image: url('${item.bgImage}')"` : '';
+                const bgData = hasBg ? ' data-has-bg="true"' : '';
+                const descTag = item.useWorkDesc ? 'div' : 'p';
+                const descClass = item.useWorkDesc ? 'work-desc' : 'work-description';
+                
+                return `
+                <div class="work-item${bgClass}"${bgData}${bgStyle}>
+                    <div class="music-title">${item.musicTitle}</div>
+                    <div class="work-meta">${item.workMeta}</div>
+                    <div class="work-title">${item.workTitle}</div>
+                    <div class="work-year">${item.workYear}</div>
+                    <${descTag} class="${descClass}">${item.description}</${descTag}>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" style="width:2.2rem;height:2.2rem;display:block;object-fit:contain;" />
+                    </button>
+                    <audio src="${item.audioFile}" preload="auto"></audio>
+                </div>
+                `;
+            }).join('');
+        }
+        
+        // Lade Daten und generiere Work Items beim Laden der Seite
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('Lade Audio-Beispiele...');
+            const audioExamples = await loadAudioExamples();
+            console.log('Geladene Audio-Beispiele:', audioExamples.length);
+            if (audioExamples.length > 0) {
+                generateWorkItems(audioExamples);
+                console.log('Work Items generiert');
+                // Update Checkerboard und initialisiere Audio/Background nach Generierung
+                // Warte etwas länger, damit DOM vollständig gerendert ist
+                setTimeout(() => {
+                    if (typeof updateAllCheckerboards === 'function') {
+                        updateAllCheckerboards();
+                    }
+                    // Lade alle Audio-Elemente vor
+                    document.querySelectorAll('.work-item audio').forEach(audioEl => {
+                        if (audioEl.readyState < 2) {
+                            audioEl.load();
+                        }
+                    });
+                    // Initialisiere Audio und Background erst nach DOM-Update
+                    requestAnimationFrame(() => {
+                        if (typeof initAudioPlayers === 'function') {
+                            initAudioPlayers();
+                        }
+                        if (typeof initBackgroundImages === 'function') {
+                            initBackgroundImages();
+                        }
+                    });
+                }, 300);
+            } else {
+                console.error('Keine Audio-Beispiele gefunden!');
+            }
+        });
+        </script>
+        
+        <!-- Contact Section -->
         <section class="contact-section">
-            <h2 class="section-title">KONTAKT</h2>
+            <h2 class="contact-title">RESONANZ</h2>
             <div class="contact-info">
-                <a href="mailto:kammererstefan@gmail.com" style="color:inherit;text-decoration:none;">kammererstefan@gmail.com</a>
+                <a href="mailto:kammererstefan@gmail.com">KAMMERERSTEFAN@GMAIL.COM</a>
             </div>
             <div class="contact-info">
-                <a href="tel:+4915115677364" style="color:inherit;text-decoration:none;">+49 151 15677364</a>
+                <a href="tel:+4915115677364">+49 151 15677364</a>
             </div>
             <div class="contact-info">ANSBACH • DEUTSCHLAND</div>
+            <!-- Im Kontaktbereich, direkt über oder unter der E-Mail-Adresse: -->
+            <div class="contact-social">
+              <a href="https://www.instagram.com/stkammerer/" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="assets/instagram.svg" alt="Instagram" />
+              </a>
+            </div>
         </section>
-        <footer>
+        
+        <!-- Footer -->
+    </main>
+        <footer class="footer">
             <div class="footer-text">
-                © 2024 STEFAN KAMMERER • ALL RIGHTS RESERVED<br>
-                DIGITAL COMPOSITION • SOUND DESIGN • LIVE PERFORMANCE
+                © 2026 STEFAN KAMMERER<br>
+                KOMPONIST • SOUND DESIGNER • AUDIOTEKT
+                <div class="footer-links">
+                    <a href="impressum.html">Impressum</a> •
+                    <a href="datenschutz.html">Datenschutzerklärung</a>
+                </div>
             </div>
         </footer>
-    </main>
+    </div>
+    
     <script>
-// Play/Stop-Button-Logik und Farbpuls-Animation für alle Werke-Kästchen
-const allWorkItems = document.querySelectorAll('.work-item');
-let globalAudioCtxs = [];
-let globalAnimIds = [];
-let lastPlayingAudio = null;
-allWorkItems.forEach((item, idx) => {
-    const btn = item.querySelector('.audio-play-btn');
-    const audio = item.querySelector('audio');
-    const title = item.querySelector('.work-title');
-    if (!btn || !audio) return;
-    let audioCtx, analyser, source, dataArray, animId, setupDone = false;
-    let colorPulseVars = [
-        { var: '--neon-pink', base: [320, 100, 50] },
-        { var: '--cyber-blue', base: [190, 100, 50] },
-        { var: '--acid-yellow', base: [65, 100, 50] }
-    ];
-    let origTitleColor = title ? getComputedStyle(title).color : null;
-    function initColorPulse() {
-        if (!setupDone) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            source = audioCtx.createMediaElementSource(audio);
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 64;
-            dataArray = new Uint8Array(analyser.frequencyBinCount);
-            source.connect(analyser);
-            analyser.connect(audioCtx.destination);
-            setupDone = true;
-            globalAudioCtxs[idx] = audioCtx;
-        }
-    }
-    function stopAllOthers() {
-        allWorkItems.forEach((otherItem, otherIdx) => {
-            if (otherItem === item) return;
-            const otherAudio = otherItem.querySelector('audio');
-            const otherBtn = otherItem.querySelector('.audio-play-btn');
-            if (otherAudio && !otherAudio.paused) {
-                otherAudio.pause();
-                otherAudio.currentTime = 0;
-                if (otherBtn) {
-                    otherBtn.classList.remove('active');
-                    otherBtn.textContent = 'Audio abspielen';
+        // Simple audio button functionality (mock)
+        document.querySelectorAll('.audio-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Reset all other buttons
+                document.querySelectorAll('.audio-btn').forEach(otherBtn => {
+                    if (otherBtn !== this) {
+                        otherBtn.classList.remove('active');
+                        // otherBtn.textContent = 'AUDIO ABSPIELEN'; // Removed text button
+                    }
+                });
+                
+                // Toggle this button
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    // this.textContent = 'AUDIO STOPPEN'; // Removed text button
+                } else {
+                    this.classList.add('active');
+                    // this.textContent = 'AUDIO STOPPEN'; // Removed text button
                 }
-            }
-            // Stoppe ggf. Animation
-            if (globalAnimIds[otherIdx]) cancelAnimationFrame(globalAnimIds[otherIdx]);
-            // Setze Titel-Farbe zurück
-            const otherTitle = otherItem.querySelector('.work-title');
-            if (otherTitle && origTitleColor) otherTitle.style.color = origTitleColor;
+            });
         });
-    }
-    function stopColorPulse() {
-        if (animId) cancelAnimationFrame(animId);
-        if (title && origTitleColor) title.style.color = origTitleColor;
-    }
-    function pulseColors() {
-        animId = requestAnimationFrame(pulseColors);
-        globalAnimIds[idx] = animId;
-        analyser.getByteFrequencyData(dataArray);
-        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
-        const pulse = 0.3 + (avg / 255) * 1.5;
-        const now = Date.now();
-        colorPulseVars.forEach(({var: v, base}, i) => {
-            const h = (base[0] + (Math.sin(now/180 + i) * 60) + (avg/255)*80) % 360;
-            const s = Math.max(40, Math.min(100, base[1] * pulse));
-            const l = Math.max(25, Math.min(90, base[2] * pulse + 30));
-            document.documentElement.style.setProperty(v, `hsl(${h}, ${s}%, ${l}%)`);
-        });
-        // Headline-Farbe dynamisch anpassen
-        if (title) {
-            if (avg > 180) {
-                title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--neon-pink');
-                title.style.transition = 'color 0.1s';
-            } else {
-                title.style.color = origTitleColor;
-                title.style.transition = 'color 0.5s';
-            }
+        
+        // Add some geometric shapes dynamically
+        function addGeometricShapes() {
+            const sections = document.querySelectorAll('.content-section');
+            const pastelColors = [
+                'var(--pastel-blue)',
+                'var(--pastel-green)', 
+                'var(--pastel-yellow)',
+                'var(--pastel-purple)',
+                'var(--pastel-orange)',
+                'var(--pastel-mint)'
+            ];
+            
+            sections.forEach((section, index) => {
+                if (Math.random() > 0.5) {
+                    const shape = document.createElement('div');
+                    shape.className = 'geo-shape';
+                    shape.style.position = 'absolute';
+                    shape.style.background = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+                    shape.style.opacity = '0.3';
+                    shape.style.pointerEvents = 'none';
+                    
+                    const size = Math.random() * 60 + 20;
+                    shape.style.width = size + 'px';
+                    shape.style.height = size + 'px';
+                    shape.style.top = Math.random() * 80 + '%';
+                    shape.style.right = Math.random() * 10 + '%';
+                    shape.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    section.style.position = 'relative';
+                    section.appendChild(shape);
+                }
+            });
         }
+        
+        // Initialize geometric shapes
+        window.addEventListener('DOMContentLoaded', addGeometricShapes);
+    </script>
+    <script>
+function applyCheckerColors(gridSelector, itemSelector, colorClasses) {
+  document.querySelectorAll(gridSelector).forEach(grid => {
+    const items = Array.from(grid.querySelectorAll(itemSelector));
+    if (items.length === 0) return;
+    // Spaltenzahl ermitteln
+    const firstTop = items[0].getBoundingClientRect().top;
+    let cols = 1;
+    for (let i = 1; i < items.length; i++) {
+      if (Math.abs(items[i].getBoundingClientRect().top - firstTop) < 2) cols++;
+      else break;
     }
+    // Farben wählen
+    let colorCount = cols === 1 ? 2 : Math.min(Math.max(2, cols - 1), colorClasses.length);
+    for (let i = 0; i < items.length; i++) {
+      items[i].classList.remove('color-a','color-b','color-c','color-d','color-e');
+      // Zeile und Spalte berechnen
+      const row = Math.floor(i / cols);
+      const col = i % cols;
+      const colorIdx = (row + col) % colorCount;
+      items[i].classList.add(colorClasses[colorIdx]);
+    }
+  });
+}
+function updateAllCheckerboards() {
+  applyCheckerColors('.content-grid', '.content-block', ['color-a','color-b','color-c','color-d','color-e']);
+  applyCheckerColors('.work-grid', '.work-item', ['color-a','color-b','color-c','color-d','color-e']);
+}
+window.addEventListener('DOMContentLoaded', updateAllCheckerboards);
+window.addEventListener('resize', () => setTimeout(updateAllCheckerboards, 100));
+</script>
+<script>
+// Flag um zu verhindern, dass Event-Listener mehrfach angehängt werden
+window.audioPlayersInitialized = false;
+
+// Funktion zur Initialisierung der Audio-Funktionalität
+function initAudioPlayers() {
+    // Überspringe wenn bereits initialisiert
+    if (window.audioPlayersInitialized) return;
+    
+    document.querySelectorAll('.work-item').forEach(item => {
+        const btn = item.querySelector('.audio-btn');
+        const audio = item.querySelector('audio');
+        if (!btn || !audio) return;
+        btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
+    
+    // Funktion zum Stoppen des Audios
+    function stopAudio({ keepActive = false } = {}) {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 1; // Stelle Volume wieder her
+        if (!keepActive) {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+        }
+        if (item.stopTimeout) {
+            clearTimeout(item.stopTimeout);
+            item.stopTimeout = null;
+        }
+        if (item.fadeOutTimeout) {
+            clearTimeout(item.fadeOutTimeout);
+            item.fadeOutTimeout = null;
+        }
+        if (item.fadeInterval) {
+            clearInterval(item.fadeInterval);
+            item.fadeInterval = null;
+        }
+        // Warte kurz, damit Audio wirklich zurückgesetzt ist
+        setTimeout(() => {
+            if (audio.currentTime !== 0) {
+                audio.currentTime = 0;
+            }
+        }, 10);
+    }
+
+    function fadeVolume(targetAudio, from, to, durationMs, onDone) {
+        if (item.fadeInterval) {
+            clearInterval(item.fadeInterval);
+            item.fadeInterval = null;
+        }
+        const start = Date.now();
+        const delta = to - from;
+        targetAudio.volume = from;
+        item.fadeInterval = setInterval(() => {
+            const t = Math.min(1, (Date.now() - start) / durationMs);
+            targetAudio.volume = from + delta * t;
+            if (t >= 1) {
+                clearInterval(item.fadeInterval);
+                item.fadeInterval = null;
+                if (typeof onDone === 'function') onDone();
+            }
+        }, 30);
+    }
+
+    // Funktion zum Starten mit zufälliger Position
+    function startAudioWithRandomPosition(audio) {
+        // Stelle sicher, dass Audio nicht spielt
+        audio.pause();
+        
+        if (!audio.duration || isNaN(audio.duration) || audio.duration === 0) {
+            const onMeta = () => {
+                audio.removeEventListener('loadedmetadata', onMeta);
+                startAudioWithRandomPosition(audio);
+            };
+            audio.addEventListener('loadedmetadata', onMeta, { once: true });
+            if (audio.readyState < 1) audio.load();
+            return;
+        }
+        
+        // Berechne zufällige Startposition
+        const maxDuration = 25;
+        const minStartSeconds = Math.min(10, Math.max(0.1, audio.duration - 1));
+        
+        if (!audio.duration || isNaN(audio.duration) || audio.duration <= 0) {
+            console.error('Audio duration nicht verfügbar');
+            return;
+        }
+        
+        const maxStart = Math.max(minStartSeconds, audio.duration - maxDuration);
+        const randomStart = minStartSeconds + Math.random() * (maxStart - minStartSeconds);
+        
+        audio.pause();
+        audio.currentTime = randomStart;
+        audio.volume = 0;
+        
+        const scheduleStop = () => {
+            const finalPos = audio.currentTime;
+            
+            const actualEndTime = Math.min(finalPos + maxDuration, audio.duration);
+            const playDuration = (actualEndTime - finalPos) * 1000;
+            const fadeDuration = 1000;
+            const fadeStartMs = Math.max(0, playDuration - fadeDuration);
+            
+            item.fadeOutTimeout = setTimeout(() => {
+                fadeVolume(audio, audio.volume, 0, fadeDuration, () => {
+                    stopAudio({ keepActive: true });
+                });
+            }, fadeStartMs);
+            
+            item.stopTimeout = setTimeout(() => {
+                stopAudio({ keepActive: true });
+            }, playDuration + 50);
+        };
+        
+        audio.play().then(() => {
+            fadeVolume(audio, 0, 1, 1000);
+            scheduleStop();
+        }).catch(err => {
+            console.error('Audio play error:', err);
+        });
+    }
+    
     btn.addEventListener('click', () => {
         if (audio.paused) {
-            stopAllOthers();
-            initColorPulse();
-            audio.play();
-            btn.classList.add('active');
-            btn.textContent = 'Audio stoppen';
-            pulseColors();
-        } else {
+            // Stoppe alle anderen Audios zuerst
+            document.querySelectorAll('.work-item').forEach(otherItem => {
+                const otherAudio = otherItem.querySelector('audio');
+                const otherBtn = otherItem.querySelector('.audio-btn');
+                if (otherAudio !== audio && otherAudio) {
+                    otherAudio.pause();
+                    otherAudio.currentTime = 0;
+                    if (otherBtn) otherBtn.classList.remove('active');
+                    if (otherBtn) otherBtn.setAttribute('aria-pressed', 'false');
+                    // Lösche Timeouts für andere Audios
+                    if (otherItem.stopTimeout) {
+                        clearTimeout(otherItem.stopTimeout);
+                        otherItem.stopTimeout = null;
+                    }
+                    if (otherItem.fadeOutTimeout) {
+                        clearTimeout(otherItem.fadeOutTimeout);
+                        otherItem.fadeOutTimeout = null;
+                    }
+                    if (otherItem.fadeInterval) {
+                        clearInterval(otherItem.fadeInterval);
+                        otherItem.fadeInterval = null;
+                    }
+                }
+            });
+            
+            // Stelle sicher, dass aktuelles Audio auch zurückgesetzt ist
             audio.pause();
             audio.currentTime = 0;
-            btn.classList.remove('active');
-            btn.textContent = 'Audio abspielen';
-            stopColorPulse();
+            
+            // Warte kurz, damit Audio zurückgesetzt ist, dann starte mit zufälliger Position
+            setTimeout(() => {
+                startAudioWithRandomPosition(audio);
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+            }, 50);
+        } else {
+            // Stoppe aktuelles Audio
+            stopAudio();
         }
     });
+    
     audio.addEventListener('ended', () => {
-        btn.classList.remove('active');
-        btn.textContent = 'Audio abspielen';
-        stopColorPulse();
+        stopAudio({ keepActive: true });
     });
+    
     audio.addEventListener('pause', () => {
-        btn.classList.remove('active');
-        btn.textContent = 'Audio abspielen';
-        stopColorPulse();
+        // Lösche Timeout wenn manuell pausiert wird
+        if (item.stopTimeout) {
+            clearTimeout(item.stopTimeout);
+            item.stopTimeout = null;
+        }
     });
 });
+    // Markiere als initialisiert
+    window.audioPlayersInitialized = true;
+}
+
+</script>
+<script>
+// Flag um zu verhindern, dass Background-Listener mehrfach angehängt werden
+window.backgroundImagesInitialized = false;
+
+// Funktion zur Initialisierung der Background-Image-Funktionalität
+function initBackgroundImages() {
+    // Überspringe wenn bereits initialisiert
+    if (window.backgroundImagesInitialized) return;
+    
+  document.querySelectorAll('.work-item[data-has-bg="true"]').forEach(item => {
+    const btn = item.querySelector('.audio-btn');
+    const audio = item.querySelector('audio');
+    if (!btn || !audio) return;
+    
+    audio.addEventListener('play', function() {
+      item.classList.add('active-bg');
+    });
+    audio.addEventListener('ended', function() {
+      item.classList.remove('active-bg');
+    });
+    audio.addEventListener('pause', function() {
+      item.classList.remove('active-bg');
+    });
+  });
+    // Markiere als initialisiert
+    window.backgroundImagesInitialized = true;
+}
+
+// Background-Images werden jetzt automatisch nach dem Generieren der Items initialisiert
+</script>
+<script>
+function addRandomHeaderShapes() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    // Entferne alte Shapes
+    header.querySelectorAll('.geo-shape-random').forEach(e => e.remove());
+    const count = Math.floor(Math.random() * 5) + 4; // 4–8 Shapes
+    for (let i = 0; i < count; i++) {
+        const shape = document.createElement('div');
+        shape.className = 'geo-shape-random';
+        // Größe: ein paar sehr klein (18–40px), sonst 60–120px
+        let size;
+        if (Math.random() < 0.3) {
+            size = Math.random() * 22 + 18; // 18–40px
+        } else {
+            size = Math.random() * 60 + 60; // 60–120px
+        }
+        shape.style.width = size + 'px';
+        shape.style.height = size + 'px';
+        // Helles Blau, leicht variiert
+        const r = 200 + Math.floor(Math.random() * 20); // 200–219
+        const g = 220 + Math.floor(Math.random() * 20); // 220–239
+        const b = 255;
+        shape.style.background = `rgb(${r},${g},${b})`;
+        // Opazität: 0.18–0.32
+        shape.style.opacity = (Math.random() * 0.14 + 0.18).toFixed(2);
+        // Rotation: 20–70 Grad
+        const rot = 20 + Math.random() * 50;
+        shape.style.transform = `rotate(${rot}deg)`;
+        shape.style.top = Math.random() * 70 + '%';
+        shape.style.left = Math.random() * 80 + '%';
+        header.appendChild(shape);
+    }
+}
+window.addEventListener('DOMContentLoaded', addRandomHeaderShapes);
 </script>
 </body>
 </html>
