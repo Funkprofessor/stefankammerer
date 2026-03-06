@@ -3,19 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Stefan Kammerer">
     <title>Stefan Kammerer – Komponist • Sound Designer • Audiotekt</title>
     <meta name="description" content="Stefan Kammerer – Komponist, Sound Designer und Audiotekt. Musik für Ihr Theater, Tanz und Installation. Werke, Kontakt und mehr.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <link rel="canonical" href="https://www.stefankammerer.de/">
+    <link rel="alternate" hreflang="de" href="https://www.stefankammerer.de/">
+    <link rel="alternate" hreflang="x-default" href="https://www.stefankammerer.de/">
     <meta property="og:title" content="Stefan Kammerer – Komponist • Sound Designer • Audiotekt">
     <meta property="og:description" content="Stefan Kammerer – Komponist, Sound Designer und Audiotekt. Musik für Ihr Theater, Tanz und Installation. Werke, Kontakt und mehr.">
     <meta property="og:url" content="https://www.stefankammerer.de/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Stefan Kammerer">
     <meta property="og:image" content="https://www.stefankammerer.de/assets/stefankammerer_opengraph.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stefan Kammerer – Komponist • Sound Designer • Audiotekt">
     <meta name="twitter:description" content="Stefan Kammerer – Komponist, Sound Designer und Audiotekt. Musik für Ihr Theater, Tanz und Installation. Werke, Kontakt und mehr.">
     <meta name="twitter:image" content="https://www.stefankammerer.de/assets/stefankammerer_opengraph.jpg">
-    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <meta name="twitter:url" content="https://www.stefankammerer.de/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.stefankammerer.de/#website",
+          "url": "https://www.stefankammerer.de/",
+          "name": "Stefan Kammerer",
+          "inLanguage": "de"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.stefankammerer.de/#webpage",
+          "url": "https://www.stefankammerer.de/",
+          "name": "Stefan Kammerer – Komponist • Sound Designer • Audiotekt",
+          "isPartOf": {
+            "@id": "https://www.stefankammerer.de/#website"
+          },
+          "about": {
+            "@id": "https://www.stefankammerer.de/#person"
+          },
+          "inLanguage": "de"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.stefankammerer.de/#person",
+          "name": "Stefan Kammerer",
+          "url": "https://www.stefankammerer.de/",
+          "mainEntityOfPage": {
+            "@id": "https://www.stefankammerer.de/#webpage"
+          },
+          "image": "https://www.stefankammerer.de/assets/stefankammerer_opengraph.jpg",
+          "jobTitle": "Komponist und Sound Designer",
+          "description": "Komponist und Sound Designer aus Ansbach. Musik fuer Theater, Tanz und Installationen.",
+          "inLanguage": "de",
+          "knowsAbout": [
+            "Komposition",
+            "Sound Design",
+            "Buehnenmusik",
+            "Theatermusik",
+            "Tanztheater",
+            "Klanginstallation",
+            "Ambisonics",
+            "Immersive Audio"
+          ],
+          "email": "mailto:kammererstefan@gmail.com",
+          "telephone": "+49 151 15677364",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ansbach",
+            "addressCountry": "DE"
+          },
+          "affiliation": [
+            {
+              "@type": "Organization",
+              "name": "Spiel.Werk"
+            },
+            {
+              "@type": "Person",
+              "name": "Daniela Aue"
+            },
+            {
+              "@type": "Person",
+              "name": "Andrea Greul"
+            },
+            {
+              "@type": "Organization",
+              "name": "Spasskoffer"
+            },
+            {
+              "@type": "Organization",
+              "name": "Stadt Ansbach"
+            },
+            {
+              "@type": "Person",
+              "name": "Lukas Aue"
+            }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/stkammerer/",
+            "https://www.facebook.com/st.kammerer",
+            "https://www.youtube.com/@funkprofessor"
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-96x96.png" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <style>
         @font-face {
             font-family: 'Noto Serif';
@@ -724,97 +823,109 @@
         <!-- Examples Content -->
         <section class="content-section">
             <div class="work-grid" id="work-grid">
-                <!-- Work items werden hier automatisch generiert -->
-            </div>
-        </section>
-        
-        <!-- Script zur Generierung der Work Items aus externer JSON-Datei -->
-        <script>
-        // Funktion zum Laden der Tonbeispiel-Daten aus der JSON-Datei
-        async function loadAudioExamples() {
-            try {
-                const response = await fetch('audio-examples.json');
-                if (!response.ok) {
-                    throw new Error('Konnte audio-examples.json nicht laden');
-                }
-                const audioExamples = await response.json();
-                return audioExamples;
-            } catch (error) {
-                console.error('Fehler beim Laden der Audio-Daten:', error);
-                return [];
-            }
-        }
-        
-        // Funktion zur Generierung der Work Items
-        function generateWorkItems(audioExamples) {
-            const grid = document.getElementById('work-grid');
-            if (!grid) return;
-            
-            // Setze Flags zurück, damit Event-Listener neu initialisiert werden können
-            if (typeof window !== 'undefined') {
-                window.audioPlayersInitialized = false;
-                window.backgroundImagesInitialized = false;
-            }
-            
-            grid.innerHTML = audioExamples.map(item => {
-                const bgClass = item.bgClass ? ` ${item.bgClass}` : '';
-                const hasBg = item.bgClass || item.bgImage;
-                const bgStyle = item.bgImage ? ` style="--bg-image: url('${item.bgImage}')"` : '';
-                const bgData = hasBg ? ' data-has-bg="true"' : '';
-                const descTag = item.useWorkDesc ? 'div' : 'p';
-                const descClass = item.useWorkDesc ? 'work-desc' : 'work-description';
-                
-                return `
-                <div class="work-item${bgClass}"${bgData}${bgStyle}>
-                    <div class="music-title">${item.musicTitle}</div>
-                    <div class="work-meta">${item.workMeta}</div>
-                    <div class="work-title">${item.workTitle}</div>
-                    <div class="work-year">${item.workYear}</div>
-                    <${descTag} class="${descClass}">${item.description}</${descTag}>
+                <!-- TONSPUR:START -->
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/variationen.jpg')">
+                    <div class="music-title">Variationen</div>
+                    <div class="work-meta">über das Jetzt</div>
+                    <div class="work-title">Eine Choreografie</div>
+                    <div class="work-year">2026</div>
+                    <p class="work-description">"Variationen über das Jetzt" kreist um die Frage nach dem Wesen des Augenblicks.<br><br>Was ist ein Moment – und was bleibt von ihm, sobald er vergangen ist? Das Stück untersucht, wie sich Wahrnehmung im Übergang zur Erinnerung verändert: Klänge entstehen, verdichten sich, lösen sich auf und erscheinen in neuer Gestalt. So wird das „Jetzt“ nicht als fixer Punkt verstanden, sondern als etwas Bewegliches – ein Zustand zwischen Gegenwart, Nachklang und innerer Rekonstruktion.</p>
                     <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
                         <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
                     </button>
-                    <audio src="${item.audioFile}" preload="auto"></audio>
+                    <audio src="assets/variationen.mp3" preload="metadata"></audio>
                 </div>
-                `;
-            }).join('');
-        }
-        
-        // Lade Daten und generiere Work Items beim Laden der Seite
-        document.addEventListener('DOMContentLoaded', async () => {
-            console.log('Lade Audio-Beispiele...');
-            const audioExamples = await loadAudioExamples();
-            console.log('Geladene Audio-Beispiele:', audioExamples.length);
-            if (audioExamples.length > 0) {
-                generateWorkItems(audioExamples);
-                console.log('Work Items generiert');
-                // Update Checkerboard und initialisiere Audio/Background nach Generierung
-                // Warte etwas länger, damit DOM vollständig gerendert ist
-                setTimeout(() => {
-                    if (typeof updateAllCheckerboards === 'function') {
-                        updateAllCheckerboards();
-                    }
-                    // Lade alle Audio-Elemente vor
-                    document.querySelectorAll('.work-item audio').forEach(audioEl => {
-                        if (audioEl.readyState < 2) {
-                            audioEl.load();
-                        }
-                    });
-                    // Initialisiere Audio und Background erst nach DOM-Update
-                    requestAnimationFrame(() => {
-                        if (typeof initAudioPlayers === 'function') {
-                            initAudioPlayers();
-                        }
-                        if (typeof initBackgroundImages === 'function') {
-                            initBackgroundImages();
-                        }
-                    });
-                }, 300);
-            } else {
-                console.error('Keine Audio-Beispiele gefunden!');
-            }
-        });
-        </script>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/1000jahre.jpg')">
+                    <div class="music-title">1000 Jahre</div>
+                    <div class="work-meta">aus "Limpert. 20 Minuten Frühling"</div>
+                    <div class="work-title">von Florian Bald</div>
+                    <div class="work-year">2025</div>
+                    <p class="work-description">Tausend Jahre<br>nichts gesehen, nichts gehört, lange geschwiegen – und nicht geweint.<br>Tausend Jahre.<br>Alles Gute, Schöne und Wahre.<br>Tausend Jahre<br>Vor dem dritten Hahnenschrei<br>für tausend Jahre.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/1000jahre.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/wandel.jpg')">
+                    <div class="music-title">OPENING SCORE</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">LUST AUF WANDEL (FILM)</div>
+                    <div class="work-year">2025</div>
+                    <p class="work-description">Der Film begleitet Menschen auf ihrer Reise zu einem bewussteren Leben – nicht technisch, sondern emotional.<br><br>Die Musik bereitet diese innere Bewegung, das Loslassen, die stille Sehnsucht nach Veränderung vor – und gibt den Bildern Raum, sich zu entfalten. Wandel und Stille – übersetzt in Klang.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/lustaufwandel.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/vergaenglichkeit.jpg')">
+                    <div class="music-title">fɛɐ̯ˈɡɛŋlɪçkaɪ̯t</div>
+                    <div class="work-meta">für</div>
+                    <div class="work-title">eine Bildinstallation</div>
+                    <div class="work-year">2025</div>
+                    <p class="work-description">Die Musik entstand als Auftragsarbeit für eine Bildinstallation, die sich mit der menschlichen Vergänglichkeit im Kontrast zur Beständigkeit der Natur auseinandersetzt. Während das menschliche Leben von Zeitlichkeit und Endlichkeit geprägt ist, erscheint die Natur als fortdauernder Kreislauf von Werden und Vergehen.<br><br>Diese Spannung zwischen Fragilität und Kontinuität spiegelt sich in der musikalischen Gestaltung wider.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/vergaenglichkeit.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/sterben.jpg')">
+                    <div class="music-title">Sterben</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">LÄUTEN</div>
+                    <div class="work-year">2024</div>
+                    <div class="work-desc">In der Performance "Läuten" wird der Klangraum einer Kirchenglocke durch eine Audio-Installation mit dem 3D-Lautsprechersystem IKO (Higher Order Ambisonics) räumlich erfahrbar gemacht. Dabei steht nicht nur der physikalische Klang im Fokus, sondern die Frage, wie Hören kulturell und sozial geprägt ist.<br><br>"Sterben" thematisiert das Verklingen als Moment des Übergangs – ein akustisches Loslassen, das körperlich spürbar wird.</div>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/sterben.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/momame.jpg')">
+                    <div class="music-title">Epilog</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">Mond.Masse.Mensch</div>
+                    <div class="work-year">2024</div>
+                    <p class="work-description">In "Mond.Masse.Mensch" entstand eine Musik, die das Verhältnis von Individuum und Masse zu Gehör bringt: inspiriert von den Bewegungsmustern der Jupitermonde, die in Balance zwischen Anziehung und Fliehkraft verweilen. Die Komposition webt Klangflächen, rhythmische Impulse und atmosphärische Spannungen – sie reflektiert, wie Körper in Bewegung geraten, sich aus ihrer Bahn werfen oder in der Menge aufgehen.<br>Die Musik formuliert akustisch die Frage nach Freiheit, Zugehörigkeit und Macht – und lädt dazu ein, das eigene Verhältnis zur Masse zu hinterfragen.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/epilog.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/versehrt.jpg')">
+                    <div class="music-title">STERNENGUCKER</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">VERSEHRT</div>
+                    <div class="work-year">2022</div>
+                    <p class="work-description">Über den Begriff der Versehrtheit nähert sich Spiel.Werk dem Thema Kaspar Hauser an. Das Tanzsolo "Versehrt" beschäftigt sich mit dieser Zurückgeworfenheit auf den eigenen Körper. Es geht um Kaspar Hausers Anstrengungen, nach Jahren des Liegens und Sitzens auf dem Kerkerboden Gehen und Sprechen zu lernen. Aber auch um den körperlichen Ausdruck seiner Fähigkeit zur kindlichen Freude und seinen unbändigen Lebenswillen.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/sternengucker.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/city01.jpg')">
+                    <div class="music-title">LEERE</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">THIS IS MY CITY</div>
+                    <div class="work-year">2022</div>
+                    <p class="work-description">Anlässlich des 800-jährigen Jubiläums der Stadt Ansbach entwickelt Spiel.Werk das Projekt "This is my City". In kurzen Tanztheatersequenzen werden Episoden erzählt, die etwas mit der Lebenswirklichkeit der Menschen in dieser Stadt zu tun haben.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/thisismycity01.mp3" preload="metadata"></audio>
+                </div>
+                <div class="work-item" data-has-bg="true" style="--bg-image: url('assets/hofnarren.jpg')">
+                    <div class="music-title">HOFNARREN BALKONSZENE</div>
+                    <div class="work-meta">aus</div>
+                    <div class="work-title">HOFNARREN</div>
+                    <div class="work-year">2021</div>
+                    <p class="work-description">Für Florian Balds Komödie Hofnarren entstand eine eigens komponierte Musik in Rokoko-Anmutung – verspielt, prunkvoll und mit feinem Gespür für Zwischentöne. Ihre Uraufführung erlebte sie im Rahmen der Ansbacher Rokoko-Festspiele.</p>
+                    <button class="audio-btn" aria-label="Audio abspielen" aria-pressed="false">
+                        <img src="assets/lautsprecher.png" alt="Lautsprecher Icon" class="audio-ohr" />
+                    </button>
+                    <audio src="assets/hofnarren-balkonszene.mp3" preload="metadata"></audio>
+                </div>
+                <!-- TONSPUR:END -->
+            </div>
+        </section>
         
         <!-- Contact Section -->
         <section class="contact-section">
@@ -1128,7 +1239,15 @@ function initBackgroundImages() {
     window.backgroundImagesInitialized = true;
 }
 
-// Background-Images werden jetzt automatisch nach dem Generieren der Items initialisiert
+// Initialisiere Audio- und Background-Funktionen fuer statisch gerenderte Work-Items
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof initAudioPlayers === 'function') {
+        initAudioPlayers();
+    }
+    if (typeof initBackgroundImages === 'function') {
+        initBackgroundImages();
+    }
+});
 </script>
 <script>
 function addRandomHeaderShapes() {

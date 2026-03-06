@@ -2,8 +2,14 @@
 ANLEITUNG: TONBEISPIEL-DATEN PFLEGEN
 ================================================================================
 
-Die Tonbeispiele werden aus der Datei "audio-examples.json" geladen.
-Änderungen in dieser Datei werden automatisch auf der Website angezeigt.
+Die Tonbeispiele werden in "audio-examples.json" gepflegt und dann statisch in
+die Website geschrieben.
+
+NACH AENDERUNGEN BITTE IM PROJEKTORDNER AUSFUEHREN:
+--------------------------------------------------------------------------------
+python3 sync-tonspur.py
+
+Danach die Seite im Browser neu laden.
 
 SO FÜGEN SIE EIN NEUES TONBEISPIEL HINZU:
 --------------------------------------------------------------------------------
@@ -32,7 +38,8 @@ WICHTIG:
 - Vergessen Sie nicht das Komma nach jedem Eintrag (außer dem letzten)
 - HTML-Tags wie <br> funktionieren im "description"-Feld
 - Die "audioFile" muss auf eine vorhandene MP3-Datei im assets-Ordner zeigen
-- Nach dem Speichern einfach die Website im Browser aktualisieren
+- Nach dem Speichern "python3 sync-tonspur.py" ausfuehren und dann Browser
+  aktualisieren
 
 BEISPIEL:
 --------------------------------------------------------------------------------

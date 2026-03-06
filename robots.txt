@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://www.stefankammerer.de/sitemap.xml
