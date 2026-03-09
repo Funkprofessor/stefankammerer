@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Canonicalize /index.html to /
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:[\?\s]|$) [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
